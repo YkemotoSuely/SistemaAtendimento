@@ -12,10 +12,10 @@ namespace SistemaAtendimento
 
         private void btnConexao_Click(object sender, EventArgs e)
         {
-            try 
+            try
             {
                 using (SqlConnection conexao = ConexaoDB.GetConexao())
-                { 
+                {
                     conexao.Open();
                     MessageBox.Show("Conexão Realizada com Sucesso!");
                 }
@@ -24,6 +24,18 @@ namespace SistemaAtendimento
             {
                 MessageBox.Show("Erro ao conectar:" + ex.Message);
             }
+        }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCadastroClientes frmCadastroClientes = new FrmCadastroClientes();
+            frmCadastroClientes.ShowDialog();
+        }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+
         }
     }
 }
