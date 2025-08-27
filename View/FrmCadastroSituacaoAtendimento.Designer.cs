@@ -1,6 +1,6 @@
 ﻿namespace SistemaAtendimento.View
 {
-    partial class FrmCadastroUsuario
+    partial class FrmCadastroSituacaoAtendimento
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             grbListaClientes = new GroupBox();
-            dgvUsuarios = new DataGridView();
+            dgvEtapas = new DataGridView();
             btnPesquisar = new Button();
             txtPesquisar = new TextBox();
             lblPesquisar = new Label();
@@ -39,36 +39,39 @@
             btnEditar = new Button();
             btnNovo = new Button();
             grbDadosCliente = new GroupBox();
-            lblPerfil = new Label();
-            cbxPerfil = new ComboBox();
-            txtTelefone = new TextBox();
-            lblSenha = new Label();
+            pnlSituacao = new Panel();
+            rdbInativo = new RadioButton();
+            rdbAtivo = new RadioButton();
+            lblSituacao = new Label();
+            txtCor = new TextBox();
+            lblCor = new Label();
             txtNome = new TextBox();
             lblNome = new Label();
             txtCodigo = new TextBox();
             lblCodigo = new Label();
             grbListaClientes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvEtapas).BeginInit();
             grbDadosCliente.SuspendLayout();
+            pnlSituacao.SuspendLayout();
             SuspendLayout();
             // 
             // grbListaClientes
             // 
-            grbListaClientes.Controls.Add(dgvUsuarios);
+            grbListaClientes.Controls.Add(dgvEtapas);
             grbListaClientes.Location = new Point(11, 243);
             grbListaClientes.Name = "grbListaClientes";
             grbListaClientes.Size = new Size(788, 225);
             grbListaClientes.TabIndex = 51;
             grbListaClientes.TabStop = false;
-            grbListaClientes.Text = "Lista de Usuários";
+            grbListaClientes.Text = "Lista de Etapas";
             // 
-            // dgvUsuarios
+            // dgvEtapas
             // 
-            dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsuarios.Location = new Point(9, 22);
-            dgvUsuarios.Name = "dgvUsuarios";
-            dgvUsuarios.Size = new Size(764, 188);
-            dgvUsuarios.TabIndex = 0;
+            dgvEtapas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEtapas.Location = new Point(9, 22);
+            dgvEtapas.Name = "dgvEtapas";
+            dgvEtapas.Size = new Size(764, 188);
+            dgvEtapas.TabIndex = 0;
             // 
             // btnPesquisar
             // 
@@ -142,10 +145,10 @@
             // 
             // grbDadosCliente
             // 
-            grbDadosCliente.Controls.Add(lblPerfil);
-            grbDadosCliente.Controls.Add(cbxPerfil);
-            grbDadosCliente.Controls.Add(txtTelefone);
-            grbDadosCliente.Controls.Add(lblSenha);
+            grbDadosCliente.Controls.Add(pnlSituacao);
+            grbDadosCliente.Controls.Add(lblSituacao);
+            grbDadosCliente.Controls.Add(txtCor);
+            grbDadosCliente.Controls.Add(lblCor);
             grbDadosCliente.Controls.Add(txtNome);
             grbDadosCliente.Controls.Add(lblNome);
             grbDadosCliente.Controls.Add(txtCodigo);
@@ -155,41 +158,63 @@
             grbDadosCliente.Size = new Size(787, 158);
             grbDadosCliente.TabIndex = 42;
             grbDadosCliente.TabStop = false;
-            grbDadosCliente.Text = "Dados do Usuário";
+            grbDadosCliente.Text = "Dados da Etapa";
             // 
-            // lblPerfil
+            // pnlSituacao
             // 
-            lblPerfil.AutoSize = true;
-            lblPerfil.Location = new Point(328, 78);
-            lblPerfil.Name = "lblPerfil";
-            lblPerfil.Size = new Size(34, 15);
-            lblPerfil.TabIndex = 27;
-            lblPerfil.Text = "Perfil";
+            pnlSituacao.Controls.Add(rdbInativo);
+            pnlSituacao.Controls.Add(rdbAtivo);
+            pnlSituacao.Location = new Point(302, 99);
+            pnlSituacao.Name = "pnlSituacao";
+            pnlSituacao.Size = new Size(144, 28);
+            pnlSituacao.TabIndex = 43;
             // 
-            // cbxPerfil
+            // rdbInativo
             // 
-            cbxPerfil.FormattingEnabled = true;
-            cbxPerfil.Items.AddRange(new object[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PR", "PB", "PA", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SE", "SP", "TO" });
-            cbxPerfil.Location = new Point(328, 99);
-            cbxPerfil.Name = "cbxPerfil";
-            cbxPerfil.Size = new Size(245, 23);
-            cbxPerfil.TabIndex = 13;
+            rdbInativo.AutoSize = true;
+            rdbInativo.Location = new Point(63, 3);
+            rdbInativo.Name = "rdbInativo";
+            rdbInativo.Size = new Size(61, 19);
+            rdbInativo.TabIndex = 1;
+            rdbInativo.TabStop = true;
+            rdbInativo.Text = "Inativo";
+            rdbInativo.UseVisualStyleBackColor = true;
             // 
-            // txtTelefone
+            // rdbAtivo
             // 
-            txtTelefone.Location = new Point(21, 99);
-            txtTelefone.Name = "txtTelefone";
-            txtTelefone.Size = new Size(280, 23);
-            txtTelefone.TabIndex = 3;
+            rdbAtivo.AutoSize = true;
+            rdbAtivo.Location = new Point(3, 3);
+            rdbAtivo.Name = "rdbAtivo";
+            rdbAtivo.Size = new Size(53, 19);
+            rdbAtivo.TabIndex = 0;
+            rdbAtivo.TabStop = true;
+            rdbAtivo.Text = "Ativo";
+            rdbAtivo.UseVisualStyleBackColor = true;
             // 
-            // lblSenha
+            // lblSituacao
             // 
-            lblSenha.AutoSize = true;
-            lblSenha.Location = new Point(21, 81);
-            lblSenha.Name = "lblSenha";
-            lblSenha.Size = new Size(39, 15);
-            lblSenha.TabIndex = 6;
-            lblSenha.Text = "Senha";
+            lblSituacao.AutoSize = true;
+            lblSituacao.Location = new Point(302, 81);
+            lblSituacao.Name = "lblSituacao";
+            lblSituacao.Size = new Size(52, 15);
+            lblSituacao.TabIndex = 42;
+            lblSituacao.Text = "Situacao";
+            // 
+            // txtCor
+            // 
+            txtCor.Location = new Point(21, 99);
+            txtCor.Name = "txtCor";
+            txtCor.Size = new Size(255, 23);
+            txtCor.TabIndex = 3;
+            // 
+            // lblCor
+            // 
+            lblCor.AutoSize = true;
+            lblCor.Location = new Point(21, 81);
+            lblCor.Name = "lblCor";
+            lblCor.Size = new Size(26, 15);
+            lblCor.TabIndex = 6;
+            lblCor.Text = "Cor";
             // 
             // txtNome
             // 
@@ -223,11 +248,11 @@
             lblCodigo.TabIndex = 0;
             lblCodigo.Text = "Código";
             // 
-            // FrmCadastroUsuario
+            // FrmCadastroStatusAtendimento
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(818, 489);
+            ClientSize = new Size(837, 494);
             Controls.Add(grbListaClientes);
             Controls.Add(btnPesquisar);
             Controls.Add(txtPesquisar);
@@ -238,12 +263,14 @@
             Controls.Add(btnEditar);
             Controls.Add(btnNovo);
             Controls.Add(grbDadosCliente);
-            Name = "FrmCadastroUsuario";
-            Text = "Cadastro de Usuários";
+            Name = "FrmCadastroStatusAtendimento";
+            Text = "Cadastro de Situação do Atendimentos";
             grbListaClientes.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvEtapas).EndInit();
             grbDadosCliente.ResumeLayout(false);
             grbDadosCliente.PerformLayout();
+            pnlSituacao.ResumeLayout(false);
+            pnlSituacao.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -251,7 +278,7 @@
         #endregion
 
         private GroupBox grbListaClientes;
-        private DataGridView dgvUsuarios;
+        private DataGridView dgvEtapas;
         private Button btnPesquisar;
         private TextBox txtPesquisar;
         private Label lblPesquisar;
@@ -261,10 +288,12 @@
         private Button btnEditar;
         private Button btnNovo;
         private GroupBox grbDadosCliente;
-        private Label lblPerfil;
-        private ComboBox cbxPerfil;
-        private TextBox txtTelefone;
-        private Label lblSenha;
+        private Panel pnlSituacao;
+        private RadioButton rdbInativo;
+        private RadioButton rdbAtivo;
+        private Label lblSituacao;
+        private TextBox txtCor;
+        private Label lblCor;
         private TextBox txtNome;
         private Label lblNome;
         private TextBox txtCodigo;
