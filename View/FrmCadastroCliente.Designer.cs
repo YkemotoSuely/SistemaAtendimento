@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             grbDadosCliente = new GroupBox();
-            lblPesquisar = new Label();
-            txtPesquisar = new TextBox();
             cbxEstado = new ComboBox();
             pnlSituacao = new Panel();
             rdbInativo = new RadioButton();
@@ -65,6 +63,8 @@
             lblNome = new Label();
             txtCodigo = new TextBox();
             lblCodigo = new Label();
+            lblPesquisar = new Label();
+            txtPesquisar = new TextBox();
             btnNovo = new Button();
             btnEditar = new Button();
             btnSalvar = new Button();
@@ -118,22 +118,6 @@
             grbDadosCliente.TabIndex = 0;
             grbDadosCliente.TabStop = false;
             grbDadosCliente.Text = "Dados do Cliente";
-            // 
-            // lblPesquisar
-            // 
-            lblPesquisar.AutoSize = true;
-            lblPesquisar.Location = new Point(544, 312);
-            lblPesquisar.Name = "lblPesquisar";
-            lblPesquisar.Size = new Size(57, 15);
-            lblPesquisar.TabIndex = 40;
-            lblPesquisar.Text = "Pesquisar";
-            // 
-            // txtPesquisar
-            // 
-            txtPesquisar.Location = new Point(544, 328);
-            txtPesquisar.Name = "txtPesquisar";
-            txtPesquisar.Size = new Size(232, 23);
-            txtPesquisar.TabIndex = 20;
             // 
             // cbxEstado
             // 
@@ -425,6 +409,22 @@
             lblCodigo.TabIndex = 0;
             lblCodigo.Text = "Código";
             // 
+            // lblPesquisar
+            // 
+            lblPesquisar.AutoSize = true;
+            lblPesquisar.Location = new Point(544, 312);
+            lblPesquisar.Name = "lblPesquisar";
+            lblPesquisar.Size = new Size(57, 15);
+            lblPesquisar.TabIndex = 40;
+            lblPesquisar.Text = "Pesquisar";
+            // 
+            // txtPesquisar
+            // 
+            txtPesquisar.Location = new Point(544, 328);
+            txtPesquisar.Name = "txtPesquisar";
+            txtPesquisar.Size = new Size(232, 23);
+            txtPesquisar.TabIndex = 20;
+            // 
             // btnNovo
             // 
             btnNovo.Location = new Point(24, 312);
@@ -472,7 +472,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(792, 328);
+            button1.Location = new Point(784, 328);
             button1.Name = "button1";
             button1.Size = new Size(56, 24);
             button1.TabIndex = 21;
