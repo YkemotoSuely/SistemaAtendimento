@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             grbListaClientes = new GroupBox();
-            this.dgvEtapas = new DataGridView();
             btnPesquisar = new Button();
             txtPesquisar = new TextBox();
             lblPesquisar = new Label();
@@ -39,39 +38,32 @@
             btnEditar = new Button();
             btnNovo = new Button();
             grbDadosCliente = new GroupBox();
+            pnlSituacao = new Panel();
+            rdbInativo = new RadioButton();
+            rdbAtivo = new RadioButton();
+            lblSituacao = new Label();
             txtOrdem = new TextBox();
             lblOrdem = new Label();
             txtNome = new TextBox();
             lblNome = new Label();
             txtCodigo = new TextBox();
             lblCodigo = new Label();
-            pnlSituacao = new Panel();
-            rdbInativo = new RadioButton();
-            rdbAtivo = new RadioButton();
-            lblSituacao = new Label();
+            dgvEtapas = new DataGridView();
             grbListaClientes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)this.dgvEtapas).BeginInit();
             grbDadosCliente.SuspendLayout();
             pnlSituacao.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvEtapas).BeginInit();
             SuspendLayout();
             // 
             // grbListaClientes
             // 
-            grbListaClientes.Controls.Add(this.dgvEtapas);
+            grbListaClientes.Controls.Add(dgvEtapas);
             grbListaClientes.Location = new Point(11, 243);
             grbListaClientes.Name = "grbListaClientes";
             grbListaClientes.Size = new Size(788, 225);
             grbListaClientes.TabIndex = 41;
             grbListaClientes.TabStop = false;
             grbListaClientes.Text = "Lista de Etapas";
-            // 
-            // dgvEtapas
-            // 
-            this.dgvEtapas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEtapas.Location = new Point(9, 22);
-            this.dgvEtapas.Name = "dgvEtapas";
-            this.dgvEtapas.Size = new Size(764, 188);
-            this.dgvEtapas.TabIndex = 0;
             // 
             // btnPesquisar
             // 
@@ -160,6 +152,46 @@
             grbDadosCliente.TabStop = false;
             grbDadosCliente.Text = "Dados da Etapa";
             // 
+            // pnlSituacao
+            // 
+            pnlSituacao.Controls.Add(rdbInativo);
+            pnlSituacao.Controls.Add(rdbAtivo);
+            pnlSituacao.Location = new Point(302, 99);
+            pnlSituacao.Name = "pnlSituacao";
+            pnlSituacao.Size = new Size(144, 28);
+            pnlSituacao.TabIndex = 43;
+            // 
+            // rdbInativo
+            // 
+            rdbInativo.AutoSize = true;
+            rdbInativo.Location = new Point(63, 3);
+            rdbInativo.Name = "rdbInativo";
+            rdbInativo.Size = new Size(61, 19);
+            rdbInativo.TabIndex = 1;
+            rdbInativo.TabStop = true;
+            rdbInativo.Text = "Inativo";
+            rdbInativo.UseVisualStyleBackColor = true;
+            // 
+            // rdbAtivo
+            // 
+            rdbAtivo.AutoSize = true;
+            rdbAtivo.Location = new Point(3, 3);
+            rdbAtivo.Name = "rdbAtivo";
+            rdbAtivo.Size = new Size(53, 19);
+            rdbAtivo.TabIndex = 0;
+            rdbAtivo.TabStop = true;
+            rdbAtivo.Text = "Ativo";
+            rdbAtivo.UseVisualStyleBackColor = true;
+            // 
+            // lblSituacao
+            // 
+            lblSituacao.AutoSize = true;
+            lblSituacao.Location = new Point(302, 81);
+            lblSituacao.Name = "lblSituacao";
+            lblSituacao.Size = new Size(52, 15);
+            lblSituacao.TabIndex = 42;
+            lblSituacao.Text = "Situacao";
+            // 
             // txtOrdem
             // 
             txtOrdem.Location = new Point(21, 99);
@@ -208,45 +240,13 @@
             lblCodigo.TabIndex = 0;
             lblCodigo.Text = "Código";
             // 
-            // pnlSituacao
+            // dgvEtapas
             // 
-            pnlSituacao.Controls.Add(rdbInativo);
-            pnlSituacao.Controls.Add(rdbAtivo);
-            pnlSituacao.Location = new Point(302, 99);
-            pnlSituacao.Name = "pnlSituacao";
-            pnlSituacao.Size = new Size(144, 28);
-            pnlSituacao.TabIndex = 43;
-            // 
-            // rdbInativo
-            // 
-            rdbInativo.AutoSize = true;
-            rdbInativo.Location = new Point(63, 3);
-            rdbInativo.Name = "rdbInativo";
-            rdbInativo.Size = new Size(61, 19);
-            rdbInativo.TabIndex = 1;
-            rdbInativo.TabStop = true;
-            rdbInativo.Text = "Inativo";
-            rdbInativo.UseVisualStyleBackColor = true;
-            // 
-            // rdbAtivo
-            // 
-            rdbAtivo.AutoSize = true;
-            rdbAtivo.Location = new Point(3, 3);
-            rdbAtivo.Name = "rdbAtivo";
-            rdbAtivo.Size = new Size(53, 19);
-            rdbAtivo.TabIndex = 0;
-            rdbAtivo.TabStop = true;
-            rdbAtivo.Text = "Ativo";
-            rdbAtivo.UseVisualStyleBackColor = true;
-            // 
-            // lblSituacao
-            // 
-            lblSituacao.AutoSize = true;
-            lblSituacao.Location = new Point(302, 81);
-            lblSituacao.Name = "lblSituacao";
-            lblSituacao.Size = new Size(52, 15);
-            lblSituacao.TabIndex = 42;
-            lblSituacao.Text = "Situacao";
+            dgvEtapas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEtapas.Location = new Point(6, 22);
+            dgvEtapas.Name = "dgvEtapas";
+            dgvEtapas.Size = new Size(767, 197);
+            dgvEtapas.TabIndex = 0;
             // 
             // FrmCadastroEtapa
             // 
@@ -266,11 +266,11 @@
             Name = "FrmCadastroEtapa";
             Text = "Cadastro de Etapas";
             grbListaClientes.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)this.dgvEtapas).EndInit();
             grbDadosCliente.ResumeLayout(false);
             grbDadosCliente.PerformLayout();
             pnlSituacao.ResumeLayout(false);
             pnlSituacao.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvEtapas).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -322,5 +322,6 @@
         private RadioButton rdbInativo;
         private RadioButton rdbAtivo;
         private Label lblSituacao;
+        private DataGridView dgvEtapas;
     }
 }

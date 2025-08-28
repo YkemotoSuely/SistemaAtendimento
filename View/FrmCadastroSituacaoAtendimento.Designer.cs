@@ -63,7 +63,7 @@
             grbListaClientes.Size = new Size(788, 225);
             grbListaClientes.TabIndex = 51;
             grbListaClientes.TabStop = false;
-            grbListaClientes.Text = "Lista de Etapas";
+            grbListaClientes.Text = "Lista de Situações do Atendimento";
             // 
             // dgvEtapas
             // 
@@ -158,7 +158,7 @@
             grbDadosCliente.Size = new Size(787, 158);
             grbDadosCliente.TabIndex = 42;
             grbDadosCliente.TabStop = false;
-            grbDadosCliente.Text = "Dados da Etapa";
+            grbDadosCliente.Text = "Dados da Situação do Atendimento";
             // 
             // pnlSituacao
             // 
@@ -248,7 +248,7 @@
             lblCodigo.TabIndex = 0;
             lblCodigo.Text = "Código";
             // 
-            // FrmCadastroStatusAtendimento
+            // FrmCadastroSituacaoAtendimento
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -263,7 +263,7 @@
             Controls.Add(btnEditar);
             Controls.Add(btnNovo);
             Controls.Add(grbDadosCliente);
-            Name = "FrmCadastroStatusAtendimento";
+            Name = "FrmCadastroSituacaoAtendimento";
             Text = "Cadastro de Situação do Atendimentos";
             grbListaClientes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvEtapas).EndInit();
