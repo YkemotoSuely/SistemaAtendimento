@@ -68,6 +68,7 @@
             lblPesquisar = new Label();
             txtPesquisar = new TextBox();
             btnNovo = new Button();
+            imlicones = new ImageList(components);
             btnEditar = new Button();
             btnSalvar = new Button();
             btnExcluir = new Button();
@@ -75,7 +76,6 @@
             button1 = new Button();
             grbListaClientes = new GroupBox();
             dgvClientes = new DataGridView();
-            imlicones = new ImageList(components);
             grbDadosCliente.SuspendLayout();
             pnlSituacao.SuspendLayout();
             pnlTipoPessoa.SuspendLayout();
@@ -415,7 +415,7 @@
             // lblPesquisar
             // 
             lblPesquisar.AutoSize = true;
-            lblPesquisar.Location = new Point(544, 312);
+            lblPesquisar.Location = new Point(520, 312);
             lblPesquisar.Name = "lblPesquisar";
             lblPesquisar.Size = new Size(57, 15);
             lblPesquisar.TabIndex = 40;
@@ -423,9 +423,9 @@
             // 
             // txtPesquisar
             // 
-            txtPesquisar.Location = new Point(544, 328);
+            txtPesquisar.Location = new Point(520, 328);
             txtPesquisar.Name = "txtPesquisar";
-            txtPesquisar.Size = new Size(248, 23);
+            txtPesquisar.Size = new Size(272, 23);
             txtPesquisar.TabIndex = 20;
             // 
             // btnNovo
@@ -441,6 +441,18 @@
             btnNovo.Text = "Novo";
             btnNovo.TextAlign = ContentAlignment.MiddleRight;
             btnNovo.UseVisualStyleBackColor = true;
+            // 
+            // imlicones
+            // 
+            imlicones.ColorDepth = ColorDepth.Depth32Bit;
+            imlicones.ImageStream = (ImageListStreamer)resources.GetObject("imlicones.ImageStream");
+            imlicones.TransparentColor = Color.Transparent;
+            imlicones.Images.SetKeyName(0, "icone-cancelar.png");
+            imlicones.Images.SetKeyName(1, "icone-editar.png");
+            imlicones.Images.SetKeyName(2, "icone-excluir.png");
+            imlicones.Images.SetKeyName(3, "icone-novo.png");
+            imlicones.Images.SetKeyName(4, "icone-pesquisar.png");
+            imlicones.Images.SetKeyName(5, "icone-salvar.png");
             // 
             // btnEditar
             // 
@@ -462,7 +474,7 @@
             btnSalvar.ImageAlign = ContentAlignment.MiddleLeft;
             btnSalvar.ImageIndex = 5;
             btnSalvar.ImageList = imlicones;
-            btnSalvar.Location = new Point(232, 312);
+            btnSalvar.Location = new Point(224, 312);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(75, 40);
             btnSalvar.TabIndex = 17;
@@ -476,7 +488,7 @@
             btnExcluir.ImageAlign = ContentAlignment.MiddleLeft;
             btnExcluir.ImageIndex = 2;
             btnExcluir.ImageList = imlicones;
-            btnExcluir.Location = new Point(336, 312);
+            btnExcluir.Location = new Point(320, 312);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(75, 40);
             btnExcluir.TabIndex = 18;
@@ -490,7 +502,7 @@
             btnCancelar.ImageAlign = ContentAlignment.MiddleLeft;
             btnCancelar.ImageIndex = 0;
             btnCancelar.ImageList = imlicones;
-            btnCancelar.Location = new Point(440, 312);
+            btnCancelar.Location = new Point(416, 312);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(88, 40);
             btnCancelar.TabIndex = 19;
@@ -525,18 +537,6 @@
             dgvClientes.Name = "dgvClientes";
             dgvClientes.Size = new Size(816, 152);
             dgvClientes.TabIndex = 0;
-            // 
-            // imlicones
-            // 
-            imlicones.ColorDepth = ColorDepth.Depth32Bit;
-            imlicones.ImageStream = (ImageListStreamer)resources.GetObject("imlicones.ImageStream");
-            imlicones.TransparentColor = Color.Transparent;
-            imlicones.Images.SetKeyName(0, "icone-cancelar.png");
-            imlicones.Images.SetKeyName(1, "icone-editar.png");
-            imlicones.Images.SetKeyName(2, "icone-excluir.png");
-            imlicones.Images.SetKeyName(3, "icone-novo.png");
-            imlicones.Images.SetKeyName(4, "icone-pesquisar.png");
-            imlicones.Images.SetKeyName(5, "icone-salvar.png");
             // 
             // FrmCadastroClientes
             // 
