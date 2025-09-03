@@ -19,11 +19,20 @@ namespace SistemaAtendimento.Controller
             
         }
 
-        public void ListarClientes()
+        public void ListarClientes() // a função try cath, testa o algoritmo dentro do escopo "try" e ,caso, dê erro retorna a mensagem declarada dentro do escopo "cath"
         {
-            var listaClientes = _clienteRepository.Listar();
+            try
+            {
+                var listaClientes = _clienteRepository.Listar();
 
-            _frmCadastroCliente.ExibirClientes(listaClientes);
-        }       
+                _frmCadastroCliente.ExibirClientes(listaClientes);
+            } 
+            catch (Exception ex)
+            {
+                _frmCadastroCliente.ExibirMensagem($"Erro ao carregar os clientes: {ex.Message}");
+            }
+           
+        }   
+        
     }
 }
