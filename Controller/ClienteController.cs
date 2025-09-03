@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using SistemaAtendimento.Repositories;
+
+namespace SistemaAtendimento.Controller
+{
+    public class ClienteController
+    {
+        private FrmCadastroClientes _frmCadastroCliente;
+        private ClienteRepository _clienteRepository;
+
+        public ClienteController(FrmCadastroClientes view) 
+        {
+            _frmCadastroCliente = view;
+            _clienteRepository = new ClienteRepository();
+            
+        }
+
+        public void ListarClientes()
+        {
+            var listaClientes = _clienteRepository.Listar();
+
+            _frmCadastroCliente.ExibirClientes(listaClientes);
+        }       
+    }
+}

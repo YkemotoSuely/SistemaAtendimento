@@ -43,9 +43,13 @@ namespace SistemaAtendimento
         {
             FrmCadastroUsuario frmCadastroUsuario = new FrmCadastroUsuario();
             frmCadastroUsuario.ShowDialog();
-            
+
         }
 
-
+        private void etapasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCadastroEtapa frmCadastroEtapa = new FrmCadastroEtapa();
+            frmCadastroEtapa.ShowDialog();
+        }
     }
 }

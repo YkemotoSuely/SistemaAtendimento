@@ -555,6 +555,7 @@
             Controls.Add(txtPesquisar);
             Name = "FrmCadastroClientes";
             Text = "Cadastro de Clientes";
+            Load += FrmCadastroClientes_Load;
             grbDadosCliente.ResumeLayout(false);
             grbDadosCliente.PerformLayout();
             pnlSituacao.ResumeLayout(false);
