@@ -42,19 +42,19 @@
             txtCodigo = new TextBox();
             lblCodigo = new Label();
             btnNovo = new Button();
+            imlicones = new ImageList(components);
             btnEditar = new Button();
             btnSalvar = new Button();
             btnExcluir = new Button();
             btnCancelar = new Button();
             btnPesquisar = new Button();
             grbListaUsuarios = new GroupBox();
-            dgvListaUsuarios = new DataGridView();
+            dgvUsuarios = new DataGridView();
             txtPesquisar = new TextBox();
-            imlicones = new ImageList(components);
             lblPesquisar = new Label();
             grbDadosUsuario.SuspendLayout();
             grbListaUsuarios.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvListaUsuarios).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             SuspendLayout();
             // 
             // grbDadosUsuario
@@ -173,6 +173,18 @@
             btnNovo.TextAlign = ContentAlignment.MiddleRight;
             btnNovo.UseVisualStyleBackColor = true;
             // 
+            // imlicones
+            // 
+            imlicones.ColorDepth = ColorDepth.Depth32Bit;
+            imlicones.ImageStream = (ImageListStreamer)resources.GetObject("imlicones.ImageStream");
+            imlicones.TransparentColor = Color.Transparent;
+            imlicones.Images.SetKeyName(0, "icone-cancelar.png");
+            imlicones.Images.SetKeyName(1, "icone-editar.png");
+            imlicones.Images.SetKeyName(2, "icone-excluir.png");
+            imlicones.Images.SetKeyName(3, "icone-novo.png");
+            imlicones.Images.SetKeyName(4, "icone-pesquisar.png");
+            imlicones.Images.SetKeyName(5, "icone-salvar.png");
+            // 
             // btnEditar
             // 
             btnEditar.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -241,7 +253,7 @@
             // 
             // grbListaUsuarios
             // 
-            grbListaUsuarios.Controls.Add(dgvListaUsuarios);
+            grbListaUsuarios.Controls.Add(dgvUsuarios);
             grbListaUsuarios.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             grbListaUsuarios.Location = new Point(16, 256);
             grbListaUsuarios.Name = "grbListaUsuarios";
@@ -250,13 +262,13 @@
             grbListaUsuarios.TabStop = false;
             grbListaUsuarios.Text = "Lista de Usuários";
             // 
-            // dgvListaUsuarios
+            // dgvUsuarios
             // 
-            dgvListaUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvListaUsuarios.Location = new Point(16, 24);
-            dgvListaUsuarios.Name = "dgvListaUsuarios";
-            dgvListaUsuarios.Size = new Size(736, 152);
-            dgvListaUsuarios.TabIndex = 0;
+            dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvUsuarios.Location = new Point(16, 24);
+            dgvUsuarios.Name = "dgvUsuarios";
+            dgvUsuarios.Size = new Size(736, 152);
+            dgvUsuarios.TabIndex = 0;
             // 
             // txtPesquisar
             // 
@@ -264,18 +276,6 @@
             txtPesquisar.Name = "txtPesquisar";
             txtPesquisar.Size = new Size(208, 23);
             txtPesquisar.TabIndex = 9;
-            // 
-            // imlicones
-            // 
-            imlicones.ColorDepth = ColorDepth.Depth32Bit;
-            imlicones.ImageStream = (ImageListStreamer)resources.GetObject("imlicones.ImageStream");
-            imlicones.TransparentColor = Color.Transparent;
-            imlicones.Images.SetKeyName(0, "icone-cancelar.png");
-            imlicones.Images.SetKeyName(1, "icone-editar.png");
-            imlicones.Images.SetKeyName(2, "icone-excluir.png");
-            imlicones.Images.SetKeyName(3, "icone-novo.png");
-            imlicones.Images.SetKeyName(4, "icone-pesquisar.png");
-            imlicones.Images.SetKeyName(5, "icone-salvar.png");
             // 
             // lblPesquisar
             // 
@@ -303,10 +303,11 @@
             Controls.Add(grbDadosUsuario);
             Name = "FrmCadastroUsuario";
             Text = "Cadastro de Usuários";
+            Load += FrmCadastroUsuario_Load;
             grbDadosUsuario.ResumeLayout(false);
             grbDadosUsuario.PerformLayout();
             grbListaUsuarios.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvListaUsuarios).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -331,7 +332,7 @@
         private Button btnCancelar;
         private Button btnPesquisar;
         private GroupBox grbListaUsuarios;
-        private DataGridView dgvListaUsuarios;
+        private DataGridView dgvUsuarios;
         private TextBox txtPesquisar;
         private ImageList imlicones;
         private Label lblPesquisar;
