@@ -21,6 +21,7 @@ namespace SistemaAtendimento.Controller
         {
             try
             {
+                
                 var listaClientes = _clienteRepository.Listar();
                 _frmCadastroCliente.ExibirClientes(listaClientes);
             }

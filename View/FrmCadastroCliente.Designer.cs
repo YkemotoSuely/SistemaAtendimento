@@ -308,7 +308,6 @@
             rdbJuridica.Name = "rdbJuridica";
             rdbJuridica.Size = new Size(65, 19);
             rdbJuridica.TabIndex = 1;
-            rdbJuridica.TabStop = true;
             rdbJuridica.Text = "Jurídica";
             rdbJuridica.UseVisualStyleBackColor = true;
             // 
@@ -319,7 +318,6 @@
             rdbFisica.Name = "rdbFisica";
             rdbFisica.Size = new Size(54, 19);
             rdbFisica.TabIndex = 0;
-            rdbFisica.TabStop = true;
             rdbFisica.Text = "Física";
             rdbFisica.UseVisualStyleBackColor = true;
             // 

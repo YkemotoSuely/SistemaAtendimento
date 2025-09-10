@@ -23,20 +23,23 @@ namespace SistemaAtendimento
             _clienteController = new ClienteController(this);
         }
 
-        private void FrmCadastroCliente_Load(object sender, EventArgs e)
-        {
-            _clienteController.ListarClientes();
-        }
 
-       
+
+
         public void ExibirMensagem(string mensagem)
         {
             MessageBox.Show(mensagem);
+
         }
 
         public void ExibirClientes(List<Clientes> clientes)
         {
             dgvClientes.DataSource = clientes;
+        }
+
+        private void FrmCadastroCliente_Load(object sender, EventArgs e)
+        {
+            _clienteController.ListarClientes();
         }
     }
 }
