@@ -51,5 +51,11 @@ namespace SistemaAtendimento
             FrmCadastroEtapa frmCadastroEtapa = new FrmCadastroEtapa();
             frmCadastroEtapa.ShowDialog();
         }
+
+        private void situacaoAtendimentoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCadastroSituacaoAtendimento frmCadastroSituacaoAtendimento = new FrmCadastroSituacaoAtendimento();
+            frmCadastroSituacaoAtendimento.ShowDialog();
+        }
     }
 }

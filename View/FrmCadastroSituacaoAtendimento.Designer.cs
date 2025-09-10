@@ -1,6 +1,6 @@
 ﻿namespace SistemaAtendimento.View
 {
-    partial class FrmCadastroStatusAtendimento
+    partial class FrmCadastroSituacaoAtendimento
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             SuspendLayout();
             // 
-            // FrmCadastroStatusAtendimento
+            // FrmCadastroSituacaoAtendimento
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Name = "FrmCadastroStatusAtendimento";
-            Text = "Cadastro de Status de Atendimentos";
+            Name = "FrmCadastroSituacaoAtendimento";
+            Text = "Cadastro de Situação de Atendimentos";
             ResumeLayout(false);
         }
 

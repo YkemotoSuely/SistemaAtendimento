@@ -28,31 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadastroEtapa));
             grbDadosEtapa = new GroupBox();
-            lblCodigo = new Label();
-            textBox1 = new TextBox();
-            lblNome = new Label();
-            txtNome = new TextBox();
-            lblOrdem = new Label();
-            textBox3 = new TextBox();
-            lblSituacao = new Label();
             pnlSituacao = new Panel();
-            btnNovo = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
-            label5 = new Label();
-            textBox4 = new TextBox();
-            button6 = new Button();
-            grbListaEtapas = new GroupBox();
-            dataGridView1 = new DataGridView();
-            rdbAtivo = new RadioButton();
             rdbInativo = new RadioButton();
+            rdbAtivo = new RadioButton();
+            lblSituacao = new Label();
+            textBox3 = new TextBox();
+            lblOrdem = new Label();
+            txtNome = new TextBox();
+            lblNome = new Label();
+            textBox1 = new TextBox();
+            lblCodigo = new Label();
+            btnNovo = new Button();
+            imlIcones = new ImageList(components);
+            btnEditar = new Button();
+            btnSalvar = new Button();
+            btnExcluir = new Button();
+            btnCancelar = new Button();
+            lblPesquisar = new Label();
+            txtPesquisar = new TextBox();
+            btnPesquisar = new Button();
+            grbListaEtapas = new GroupBox();
+            dgvListaEtapas = new DataGridView();
             grbDadosEtapa.SuspendLayout();
             pnlSituacao.SuspendLayout();
             grbListaEtapas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvListaEtapas).BeginInit();
             SuspendLayout();
             // 
             // grbDadosEtapa
@@ -72,63 +75,6 @@
             grbDadosEtapa.TabStop = false;
             grbDadosEtapa.Text = "Dados da Etapa";
             // 
-            // lblCodigo
-            // 
-            lblCodigo.AutoSize = true;
-            lblCodigo.Location = new Point(16, 24);
-            lblCodigo.Name = "lblCodigo";
-            lblCodigo.Size = new Size(46, 15);
-            lblCodigo.TabIndex = 0;
-            lblCodigo.Text = "Código";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(16, 48);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(128, 23);
-            textBox1.TabIndex = 1;
-            // 
-            // lblNome
-            // 
-            lblNome.AutoSize = true;
-            lblNome.Location = new Point(184, 24);
-            lblNome.Name = "lblNome";
-            lblNome.Size = new Size(40, 15);
-            lblNome.TabIndex = 2;
-            lblNome.Text = "Nome";
-            // 
-            // txtNome
-            // 
-            txtNome.Location = new Point(184, 48);
-            txtNome.Name = "txtNome";
-            txtNome.Size = new Size(576, 23);
-            txtNome.TabIndex = 3;
-            // 
-            // lblOrdem
-            // 
-            lblOrdem.AutoSize = true;
-            lblOrdem.Location = new Point(16, 80);
-            lblOrdem.Name = "lblOrdem";
-            lblOrdem.Size = new Size(44, 15);
-            lblOrdem.TabIndex = 4;
-            lblOrdem.Text = "Ordem";
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(16, 104);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(240, 23);
-            textBox3.TabIndex = 5;
-            // 
-            // lblSituacao
-            // 
-            lblSituacao.AutoSize = true;
-            lblSituacao.Location = new Point(296, 80);
-            lblSituacao.Name = "lblSituacao";
-            lblSituacao.Size = new Size(52, 15);
-            lblSituacao.TabIndex = 6;
-            lblSituacao.Text = "Situação";
-            // 
             // pnlSituacao
             // 
             pnlSituacao.Controls.Add(rdbInativo);
@@ -137,105 +83,6 @@
             pnlSituacao.Name = "pnlSituacao";
             pnlSituacao.Size = new Size(152, 32);
             pnlSituacao.TabIndex = 7;
-            // 
-            // btnNovo
-            // 
-            btnNovo.Location = new Point(16, 200);
-            btnNovo.Name = "btnNovo";
-            btnNovo.Size = new Size(64, 32);
-            btnNovo.TabIndex = 1;
-            btnNovo.Text = "button1";
-            btnNovo.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(104, 200);
-            button2.Name = "button2";
-            button2.Size = new Size(64, 32);
-            button2.TabIndex = 2;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(192, 200);
-            button3.Name = "button3";
-            button3.Size = new Size(64, 32);
-            button3.TabIndex = 3;
-            button3.Text = "button3";
-            button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            button4.Location = new Point(280, 200);
-            button4.Name = "button4";
-            button4.Size = new Size(64, 32);
-            button4.TabIndex = 4;
-            button4.Text = "button4";
-            button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            button5.Location = new Point(368, 200);
-            button5.Name = "button5";
-            button5.Size = new Size(64, 32);
-            button5.TabIndex = 5;
-            button5.Text = "button5";
-            button5.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(456, 192);
-            label5.Name = "label5";
-            label5.Size = new Size(38, 15);
-            label5.TabIndex = 6;
-            label5.Text = "label5";
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(456, 208);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(280, 23);
-            textBox4.TabIndex = 7;
-            // 
-            // button6
-            // 
-            button6.Location = new Point(744, 200);
-            button6.Name = "button6";
-            button6.Size = new Size(32, 32);
-            button6.TabIndex = 8;
-            button6.Text = "button6";
-            button6.UseVisualStyleBackColor = true;
-            // 
-            // grbListaEtapas
-            // 
-            grbListaEtapas.Controls.Add(dataGridView1);
-            grbListaEtapas.Location = new Point(8, 256);
-            grbListaEtapas.Name = "grbListaEtapas";
-            grbListaEtapas.Size = new Size(784, 184);
-            grbListaEtapas.TabIndex = 9;
-            grbListaEtapas.TabStop = false;
-            grbListaEtapas.Text = "Lista de Etapas";
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(8, 24);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(768, 150);
-            dataGridView1.TabIndex = 0;
-            // 
-            // rdbAtivo
-            // 
-            rdbAtivo.AutoSize = true;
-            rdbAtivo.Location = new Point(8, 8);
-            rdbAtivo.Name = "rdbAtivo";
-            rdbAtivo.Size = new Size(53, 19);
-            rdbAtivo.TabIndex = 1;
-            rdbAtivo.TabStop = true;
-            rdbAtivo.Text = "Ativo";
-            rdbAtivo.UseVisualStyleBackColor = true;
             // 
             // rdbInativo
             // 
@@ -248,29 +95,220 @@
             rdbInativo.Text = "Inativo";
             rdbInativo.UseVisualStyleBackColor = true;
             // 
+            // rdbAtivo
+            // 
+            rdbAtivo.AutoSize = true;
+            rdbAtivo.Location = new Point(8, 8);
+            rdbAtivo.Name = "rdbAtivo";
+            rdbAtivo.Size = new Size(53, 19);
+            rdbAtivo.TabIndex = 1;
+            rdbAtivo.TabStop = true;
+            rdbAtivo.Text = "Ativo";
+            rdbAtivo.UseVisualStyleBackColor = true;
+            // 
+            // lblSituacao
+            // 
+            lblSituacao.AutoSize = true;
+            lblSituacao.Location = new Point(296, 80);
+            lblSituacao.Name = "lblSituacao";
+            lblSituacao.Size = new Size(52, 15);
+            lblSituacao.TabIndex = 6;
+            lblSituacao.Text = "Situação";
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(16, 104);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(240, 23);
+            textBox3.TabIndex = 5;
+            // 
+            // lblOrdem
+            // 
+            lblOrdem.AutoSize = true;
+            lblOrdem.Location = new Point(16, 80);
+            lblOrdem.Name = "lblOrdem";
+            lblOrdem.Size = new Size(44, 15);
+            lblOrdem.TabIndex = 4;
+            lblOrdem.Text = "Ordem";
+            // 
+            // txtNome
+            // 
+            txtNome.Location = new Point(184, 48);
+            txtNome.Name = "txtNome";
+            txtNome.Size = new Size(576, 23);
+            txtNome.TabIndex = 3;
+            // 
+            // lblNome
+            // 
+            lblNome.AutoSize = true;
+            lblNome.Location = new Point(184, 24);
+            lblNome.Name = "lblNome";
+            lblNome.Size = new Size(40, 15);
+            lblNome.TabIndex = 2;
+            lblNome.Text = "Nome";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(16, 48);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(128, 23);
+            textBox1.TabIndex = 1;
+            // 
+            // lblCodigo
+            // 
+            lblCodigo.AutoSize = true;
+            lblCodigo.Location = new Point(16, 24);
+            lblCodigo.Name = "lblCodigo";
+            lblCodigo.Size = new Size(46, 15);
+            lblCodigo.TabIndex = 0;
+            lblCodigo.Text = "Código";
+            // 
+            // btnNovo
+            // 
+            btnNovo.ImageAlign = ContentAlignment.MiddleLeft;
+            btnNovo.ImageIndex = 3;
+            btnNovo.ImageList = imlIcones;
+            btnNovo.Location = new Point(8, 200);
+            btnNovo.Name = "btnNovo";
+            btnNovo.Size = new Size(72, 40);
+            btnNovo.TabIndex = 1;
+            btnNovo.Text = "Novo";
+            btnNovo.TextAlign = ContentAlignment.MiddleRight;
+            btnNovo.UseVisualStyleBackColor = true;
+            // 
+            // imlIcones
+            // 
+            imlIcones.ColorDepth = ColorDepth.Depth32Bit;
+            imlIcones.ImageStream = (ImageListStreamer)resources.GetObject("imlIcones.ImageStream");
+            imlIcones.TransparentColor = Color.Transparent;
+            imlIcones.Images.SetKeyName(0, "icone-cancelar.png");
+            imlIcones.Images.SetKeyName(1, "icone-editar.png");
+            imlIcones.Images.SetKeyName(2, "icone-excluir.png");
+            imlIcones.Images.SetKeyName(3, "icone-novo.png");
+            imlIcones.Images.SetKeyName(4, "icone-pesquisar.png");
+            imlIcones.Images.SetKeyName(5, "icone-salvar.png");
+            // 
+            // btnEditar
+            // 
+            btnEditar.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEditar.ImageIndex = 1;
+            btnEditar.ImageList = imlIcones;
+            btnEditar.Location = new Point(96, 200);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(72, 40);
+            btnEditar.TabIndex = 2;
+            btnEditar.Text = "Editar";
+            btnEditar.TextAlign = ContentAlignment.MiddleRight;
+            btnEditar.UseVisualStyleBackColor = true;
+            // 
+            // btnSalvar
+            // 
+            btnSalvar.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSalvar.ImageIndex = 5;
+            btnSalvar.ImageList = imlIcones;
+            btnSalvar.Location = new Point(184, 200);
+            btnSalvar.Name = "btnSalvar";
+            btnSalvar.Size = new Size(72, 40);
+            btnSalvar.TabIndex = 3;
+            btnSalvar.Text = "Salvar";
+            btnSalvar.TextAlign = ContentAlignment.MiddleRight;
+            btnSalvar.UseVisualStyleBackColor = true;
+            // 
+            // btnExcluir
+            // 
+            btnExcluir.ImageAlign = ContentAlignment.MiddleLeft;
+            btnExcluir.ImageIndex = 2;
+            btnExcluir.ImageList = imlIcones;
+            btnExcluir.Location = new Point(272, 200);
+            btnExcluir.Name = "btnExcluir";
+            btnExcluir.Size = new Size(72, 40);
+            btnExcluir.TabIndex = 4;
+            btnExcluir.Text = "Excluir";
+            btnExcluir.TextAlign = ContentAlignment.MiddleRight;
+            btnExcluir.UseVisualStyleBackColor = true;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.DialogResult = DialogResult.Continue;
+            btnCancelar.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCancelar.ImageIndex = 0;
+            btnCancelar.ImageList = imlIcones;
+            btnCancelar.Location = new Point(360, 200);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(80, 40);
+            btnCancelar.TabIndex = 5;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.TextAlign = ContentAlignment.MiddleRight;
+            btnCancelar.UseVisualStyleBackColor = true;
+            // 
+            // lblPesquisar
+            // 
+            lblPesquisar.AutoSize = true;
+            lblPesquisar.Location = new Point(456, 200);
+            lblPesquisar.Name = "lblPesquisar";
+            lblPesquisar.Size = new Size(57, 15);
+            lblPesquisar.TabIndex = 6;
+            lblPesquisar.Text = "Pesquisar";
+            // 
+            // txtPesquisar
+            // 
+            txtPesquisar.Location = new Point(456, 216);
+            txtPesquisar.Name = "txtPesquisar";
+            txtPesquisar.Size = new Size(280, 23);
+            txtPesquisar.TabIndex = 7;
+            // 
+            // btnPesquisar
+            // 
+            btnPesquisar.ImageIndex = 4;
+            btnPesquisar.ImageList = imlIcones;
+            btnPesquisar.Location = new Point(744, 208);
+            btnPesquisar.Name = "btnPesquisar";
+            btnPesquisar.Size = new Size(32, 32);
+            btnPesquisar.TabIndex = 8;
+            btnPesquisar.UseVisualStyleBackColor = true;
+            // 
+            // grbListaEtapas
+            // 
+            grbListaEtapas.Controls.Add(dgvListaEtapas);
+            grbListaEtapas.Location = new Point(8, 256);
+            grbListaEtapas.Name = "grbListaEtapas";
+            grbListaEtapas.Size = new Size(784, 184);
+            grbListaEtapas.TabIndex = 9;
+            grbListaEtapas.TabStop = false;
+            grbListaEtapas.Text = "Lista de Etapas";
+            // 
+            // dgvListaEtapas
+            // 
+            dgvListaEtapas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvListaEtapas.Location = new Point(8, 24);
+            dgvListaEtapas.Name = "dgvListaEtapas";
+            dgvListaEtapas.Size = new Size(768, 150);
+            dgvListaEtapas.TabIndex = 0;
+            // 
             // FrmCadastroEtapa
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(grbListaEtapas);
-            Controls.Add(button6);
-            Controls.Add(textBox4);
-            Controls.Add(label5);
-            Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
+            Controls.Add(btnPesquisar);
+            Controls.Add(txtPesquisar);
+            Controls.Add(lblPesquisar);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnExcluir);
+            Controls.Add(btnSalvar);
+            Controls.Add(btnEditar);
             Controls.Add(btnNovo);
             Controls.Add(grbDadosEtapa);
             Name = "FrmCadastroEtapa";
             Text = "Cadastro de Etapas";
+            Load += FrmCadastroEtapa_Load;
             grbDadosEtapa.ResumeLayout(false);
             grbDadosEtapa.PerformLayout();
             pnlSituacao.ResumeLayout(false);
             pnlSituacao.PerformLayout();
             grbListaEtapas.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvListaEtapas).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -287,16 +325,17 @@
         private TextBox textBox3;
         private Label lblOrdem;
         private Button btnNovo;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private Button button5;
-        private Label label5;
-        private TextBox textBox4;
-        private Button button6;
+        private Button btnEditar;
+        private Button btnSalvar;
+        private Button btnExcluir;
+        private Button btnCancelar;
+        private Label lblPesquisar;
+        private TextBox txtPesquisar;
+        private Button btnPesquisar;
         private GroupBox grbListaEtapas;
-        private DataGridView dataGridView1;
+        private DataGridView dgvListaEtapas;
         private RadioButton rdbAtivo;
         private RadioButton rdbInativo;
+        private ImageList imlIcones;
     }
 }
