@@ -16,5 +16,10 @@ namespace SistemaAtendimento.View
         {
             InitializeComponent();
         }
+
+        private void lblOrdem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
