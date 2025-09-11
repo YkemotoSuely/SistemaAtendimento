@@ -147,13 +147,13 @@
             rdbInativo.Name = "rdbInativo";
             rdbInativo.Size = new Size(61, 19);
             rdbInativo.TabIndex = 1;
-            rdbInativo.TabStop = true;
             rdbInativo.Text = "Inativo";
             rdbInativo.UseVisualStyleBackColor = true;
             // 
             // rdbAtivo
             // 
             rdbAtivo.AutoSize = true;
+            rdbAtivo.Checked = true;
             rdbAtivo.Location = new Point(8, 8);
             rdbAtivo.Name = "rdbAtivo";
             rdbAtivo.Size = new Size(53, 19);
@@ -308,13 +308,13 @@
             rdbJuridica.Name = "rdbJuridica";
             rdbJuridica.Size = new Size(65, 19);
             rdbJuridica.TabIndex = 12;
-            rdbJuridica.TabStop = true;
             rdbJuridica.Text = "Jurídica";
             rdbJuridica.UseVisualStyleBackColor = false;
             // 
             // rdbFisica
             // 
             rdbFisica.AutoSize = true;
+            rdbFisica.Checked = true;
             rdbFisica.Location = new Point(8, 8);
             rdbFisica.Name = "rdbFisica";
             rdbFisica.Size = new Size(54, 19);
@@ -481,6 +481,7 @@
             btnSalvar.Text = "Salvar";
             btnSalvar.TextAlign = ContentAlignment.MiddleRight;
             btnSalvar.UseVisualStyleBackColor = true;
+            btnSalvar.Click += btnSalvar_Click;
             // 
             // btnExcluir
             // 
