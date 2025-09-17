@@ -35,11 +35,11 @@
             rdbInativo = new RadioButton();
             rdbAtivo = new RadioButton();
             lblSituacao = new Label();
-            textBox3 = new TextBox();
+            txtOrdem = new TextBox();
             lblOrdem = new Label();
             txtNome = new TextBox();
             lblNome = new Label();
-            textBox1 = new TextBox();
+            txtCodigo = new TextBox();
             lblCodigo = new Label();
             btnNovo = new Button();
             imlIcones = new ImageList(components);
@@ -62,11 +62,11 @@
             // 
             grbDadosEtapa.Controls.Add(pnlSituacao);
             grbDadosEtapa.Controls.Add(lblSituacao);
-            grbDadosEtapa.Controls.Add(textBox3);
+            grbDadosEtapa.Controls.Add(txtOrdem);
             grbDadosEtapa.Controls.Add(lblOrdem);
             grbDadosEtapa.Controls.Add(txtNome);
             grbDadosEtapa.Controls.Add(lblNome);
-            grbDadosEtapa.Controls.Add(textBox1);
+            grbDadosEtapa.Controls.Add(txtCodigo);
             grbDadosEtapa.Controls.Add(lblCodigo);
             grbDadosEtapa.Location = new Point(8, 16);
             grbDadosEtapa.Name = "grbDadosEtapa";
@@ -98,6 +98,7 @@
             // rdbAtivo
             // 
             rdbAtivo.AutoSize = true;
+            rdbAtivo.Checked = true;
             rdbAtivo.Location = new Point(8, 8);
             rdbAtivo.Name = "rdbAtivo";
             rdbAtivo.Size = new Size(53, 19);
@@ -115,12 +116,12 @@
             lblSituacao.TabIndex = 6;
             lblSituacao.Text = "Situação";
             // 
-            // textBox3
+            // txtOrdem
             // 
-            textBox3.Location = new Point(16, 104);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(240, 23);
-            textBox3.TabIndex = 5;
+            txtOrdem.Location = new Point(16, 104);
+            txtOrdem.Name = "txtOrdem";
+            txtOrdem.Size = new Size(240, 23);
+            txtOrdem.TabIndex = 5;
             // 
             // lblOrdem
             // 
@@ -147,12 +148,12 @@
             lblNome.TabIndex = 2;
             lblNome.Text = "Nome";
             // 
-            // textBox1
+            // txtCodigo
             // 
-            textBox1.Location = new Point(16, 48);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(128, 23);
-            textBox1.TabIndex = 1;
+            txtCodigo.Location = new Point(16, 48);
+            txtCodigo.Name = "txtCodigo";
+            txtCodigo.Size = new Size(128, 23);
+            txtCodigo.TabIndex = 1;
             // 
             // lblCodigo
             // 
@@ -175,6 +176,7 @@
             btnNovo.Text = "Novo";
             btnNovo.TextAlign = ContentAlignment.MiddleRight;
             btnNovo.UseVisualStyleBackColor = true;
+            btnNovo.Click += btnNovo_Click;
             // 
             // imlIcones
             // 
@@ -190,6 +192,7 @@
             // 
             // btnEditar
             // 
+            btnEditar.Enabled = false;
             btnEditar.ImageAlign = ContentAlignment.MiddleLeft;
             btnEditar.ImageIndex = 1;
             btnEditar.ImageList = imlIcones;
@@ -203,6 +206,7 @@
             // 
             // btnSalvar
             // 
+            btnSalvar.Enabled = false;
             btnSalvar.ImageAlign = ContentAlignment.MiddleLeft;
             btnSalvar.ImageIndex = 5;
             btnSalvar.ImageList = imlIcones;
@@ -213,9 +217,11 @@
             btnSalvar.Text = "Salvar";
             btnSalvar.TextAlign = ContentAlignment.MiddleRight;
             btnSalvar.UseVisualStyleBackColor = true;
+            btnSalvar.Click += btnSalvar_Click;
             // 
             // btnExcluir
             // 
+            btnExcluir.Enabled = false;
             btnExcluir.ImageAlign = ContentAlignment.MiddleLeft;
             btnExcluir.ImageIndex = 2;
             btnExcluir.ImageList = imlIcones;
@@ -230,6 +236,7 @@
             // btnCancelar
             // 
             btnCancelar.DialogResult = DialogResult.Continue;
+            btnCancelar.Enabled = false;
             btnCancelar.ImageAlign = ContentAlignment.MiddleLeft;
             btnCancelar.ImageIndex = 0;
             btnCancelar.ImageList = imlIcones;
@@ -240,6 +247,7 @@
             btnCancelar.Text = "Cancelar";
             btnCancelar.TextAlign = ContentAlignment.MiddleRight;
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // lblPesquisar
             // 
@@ -318,11 +326,11 @@
         private GroupBox grbDadosEtapa;
         private TextBox txtNome;
         private Label lblNome;
-        private TextBox textBox1;
+        private TextBox txtCodigo;
         private Label lblCodigo;
         private Panel pnlSituacao;
         private Label lblSituacao;
-        private TextBox textBox3;
+        private TextBox txtOrdem;
         private Label lblOrdem;
         private Button btnNovo;
         private Button btnEditar;

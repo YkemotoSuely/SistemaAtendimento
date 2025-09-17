@@ -37,7 +37,7 @@ namespace SistemaAtendimento
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            Clientes cliente = new Clientes 
+            Clientes cliente = new Clientes
             {
                 Nome = txtNome.Text,
                 Email = txtEmail.Text,
@@ -46,23 +46,25 @@ namespace SistemaAtendimento
                 Telefone = txtTelefone.Text,
                 Celular = txtCelular.Text,
                 Cep = txtCep.Text,
-                Endereco = txtEndereco.Text,    
+                Endereco = txtEndereco.Text,
                 Numero = txtNumero.Text,
                 Complemento = txtComplemento.Text,
                 Bairro = txtBairro.Text,
                 Cidade = txtCidade.Text,
-                Estado = cbxEstado.Text,    
+                Estado = cbxEstado.Text,
                 Ativo = rdbAtivo.Checked,
             };
 
-            if(!ValidarDados(cliente))
+            if (!ValidarDados(cliente))
                 return;
 
             _clienteController.Salvar(cliente);
+
+
         }
-        public bool ValidarDados(Clientes clientes) 
+        public bool ValidarDados(Clientes clientes)
         {
-            if (string.IsNullOrWhiteSpace(txtNome.Text)) 
+            if (string.IsNullOrWhiteSpace(txtNome.Text))
             {
                 ExibirMensagem("O campo nome é obrigatório");
                 txtNome.Focus();
@@ -84,20 +86,29 @@ namespace SistemaAtendimento
                     txtCpfCnpj.Focus();
                     return false;
                 }
-
-            }
-            else if (rdbJuridica.Checked)
-            {
-                if (string.IsNullOrWhiteSpace(txtCpfCnpj.Text))
+                else
                 {
                     ExibirMensagem("O campo CNPJ é obrigatório");
-                    txtCpfCnpj.Focus();
-                    return false;
-                }
 
+                }
+                txtCpfCnpj.Focus();
+                return false;
 
             }
-            
+            else
+            {
+                if (rdbFisica.Checked)
+                {
+                    //verificar se o CPF é válido
+                }
+                else
+                {
+                    //verifica se o CNPJ é válido
+                }
+
+            }
+
+
             if (string.IsNullOrWhiteSpace(txtCep.Text))
             {
                 ExibirMensagem("O campo CEP é obrigatório");
@@ -140,6 +151,101 @@ namespace SistemaAtendimento
                 return false;
             }
             return true;
+        }
+
+        private void rdbJuridica_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbJuridica.Checked)
+            {
+                lblCpfCnpj.Text = "CNPJ";
+
+            }
+
+
+        }
+
+        private void rdbFisica_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbFisica.Checked)
+            {
+                lblCpfCnpj.Text = "CPF";
+            }
+        }
+
+        private void HabilitarCampos()
+        {
+            txtNome.ReadOnly = false;
+            txtEmail.ReadOnly = false;
+            txtTelefone.ReadOnly = false;
+            txtCelular.ReadOnly = false;
+            pnlTipoPessoa.Enabled = true;
+            txtCpfCnpj.ReadOnly = false;
+            txtCep.ReadOnly = false;
+            txtEndereco.ReadOnly = false;
+            txtNumero.ReadOnly = false;
+            txtComplemento.ReadOnly = false;
+            txtCidade.ReadOnly = false;
+            txtBairro.ReadOnly = false;
+            cbxEstado.Enabled = true;
+            pnlSituacao.Enabled = true;
+
+            btnNovo.Enabled = false;
+            btnSalvar.Enabled = true;
+            btnCancelar.Enabled = true;
+        }
+
+        private void LimparCampos()
+        {
+            txtCodigo.Clear();
+            txtNome.Clear();
+            txtEmail.Clear();
+            txtTelefone.Clear();
+            txtCelular.Clear();
+            rdbFisica.Checked = true;
+            rdbJuridica.Checked = true;
+            txtCpfCnpj.Clear();
+            txtCep.Clear();
+            txtEndereco.Clear();
+            txtNumero.Clear();
+            txtComplemento.Clear();
+            txtCidade.Clear();
+            txtBairro.Clear();
+            cbxEstado.Text = "";
+
+        }
+
+        public void DesabilitarCampos()
+        {
+            txtNome.ReadOnly = true;
+            txtEmail.ReadOnly = true;
+            txtTelefone.ReadOnly = true;
+            txtCelular.ReadOnly = true;
+            pnlTipoPessoa.Enabled = false;
+            txtCpfCnpj.ReadOnly = true;
+            txtCep.ReadOnly = true;
+            txtEndereco.ReadOnly = true;
+            txtNumero.ReadOnly = true;
+            txtComplemento.ReadOnly = true;
+            txtCidade.ReadOnly = true;
+            txtBairro.ReadOnly = true;
+            cbxEstado.Enabled = false;
+            pnlSituacao.Enabled = false;
+
+            btnNovo.Enabled = true;
+            btnSalvar.Enabled = false;
+            btnCancelar.Enabled = false;
+            btnEditar.Enabled = false;
+            btnExcluir.Enabled = false;
+        }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            HabilitarCampos();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            DesabilitarCampos();
         }
     }
 }
