@@ -133,6 +133,7 @@
             // 
             // cbxEstado
             // 
+            cbxEstado.Enabled = false;
             cbxEstado.FormattingEnabled = true;
             cbxEstado.Items.AddRange(new object[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PR", "PB", "PA", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SE", "SP", "TO" });
             cbxEstado.Location = new Point(24, 272);
@@ -144,6 +145,7 @@
             // 
             pnlSituacao.Controls.Add(rdbInativo);
             pnlSituacao.Controls.Add(rdbAtivo);
+            pnlSituacao.Enabled = false;
             pnlSituacao.Location = new Point(205, 269);
             pnlSituacao.Name = "pnlSituacao";
             pnlSituacao.Size = new Size(144, 28);
@@ -184,6 +186,7 @@
             // 
             txtCidade.Location = new Point(519, 216);
             txtCidade.Name = "txtCidade";
+            txtCidade.ReadOnly = true;
             txtCidade.Size = new Size(253, 23);
             txtCidade.TabIndex = 12;
             // 
@@ -200,6 +203,7 @@
             // 
             txtComplemento.Location = new Point(196, 216);
             txtComplemento.Name = "txtComplemento";
+            txtComplemento.ReadOnly = true;
             txtComplemento.Size = new Size(295, 23);
             txtComplemento.TabIndex = 11;
             // 
@@ -216,6 +220,7 @@
             // 
             txtBairro.Location = new Point(21, 216);
             txtBairro.Name = "txtBairro";
+            txtBairro.ReadOnly = true;
             txtBairro.Size = new Size(153, 23);
             txtBairro.TabIndex = 10;
             // 
@@ -232,6 +237,7 @@
             // 
             txtNumero.Location = new Point(546, 157);
             txtNumero.Name = "txtNumero";
+            txtNumero.ReadOnly = true;
             txtNumero.Size = new Size(226, 23);
             txtNumero.TabIndex = 9;
             // 
@@ -248,6 +254,7 @@
             // 
             txtEndereco.Location = new Point(196, 157);
             txtEndereco.Name = "txtEndereco";
+            txtEndereco.ReadOnly = true;
             txtEndereco.Size = new Size(331, 23);
             txtEndereco.TabIndex = 8;
             // 
@@ -264,6 +271,7 @@
             // 
             txtCep.Location = new Point(21, 157);
             txtCep.Name = "txtCep";
+            txtCep.ReadOnly = true;
             txtCep.Size = new Size(153, 23);
             txtCep.TabIndex = 7;
             // 
@@ -280,6 +288,7 @@
             // 
             txtCpfCnpj.Location = new Point(546, 102);
             txtCpfCnpj.Name = "txtCpfCnpj";
+            txtCpfCnpj.ReadOnly = true;
             txtCpfCnpj.Size = new Size(226, 23);
             txtCpfCnpj.TabIndex = 6;
             // 
@@ -288,14 +297,15 @@
             lblCpfCnpj.AutoSize = true;
             lblCpfCnpj.Location = new Point(546, 84);
             lblCpfCnpj.Name = "lblCpfCnpj";
-            lblCpfCnpj.Size = new Size(60, 15);
+            lblCpfCnpj.Size = new Size(28, 15);
             lblCpfCnpj.TabIndex = 12;
-            lblCpfCnpj.Text = "CPF/CNPJ";
+            lblCpfCnpj.Text = "CPF";
             // 
             // pnlTipoPessoa
             // 
             pnlTipoPessoa.Controls.Add(rdbJuridica);
             pnlTipoPessoa.Controls.Add(rdbFisica);
+            pnlTipoPessoa.Enabled = false;
             pnlTipoPessoa.Location = new Point(383, 100);
             pnlTipoPessoa.Name = "pnlTipoPessoa";
             pnlTipoPessoa.Size = new Size(144, 28);
@@ -310,6 +320,7 @@
             rdbJuridica.TabIndex = 1;
             rdbJuridica.Text = "Jurídica";
             rdbJuridica.UseVisualStyleBackColor = true;
+            rdbJuridica.CheckedChanged += rdbJuridica_CheckedChanged;
             // 
             // rdbFisica
             // 
@@ -322,6 +333,7 @@
             rdbFisica.TabStop = true;
             rdbFisica.Text = "Física";
             rdbFisica.UseVisualStyleBackColor = true;
+            rdbFisica.CheckedChanged += rdbFisica_CheckedChanged;
             // 
             // lblTipoPessoa
             // 
@@ -336,6 +348,7 @@
             // 
             txtCelular.Location = new Point(196, 99);
             txtCelular.Name = "txtCelular";
+            txtCelular.ReadOnly = true;
             txtCelular.Size = new Size(153, 23);
             txtCelular.TabIndex = 4;
             // 
@@ -352,6 +365,7 @@
             // 
             txtTelefone.Location = new Point(21, 99);
             txtTelefone.Name = "txtTelefone";
+            txtTelefone.ReadOnly = true;
             txtTelefone.Size = new Size(153, 23);
             txtTelefone.TabIndex = 3;
             // 
@@ -368,6 +382,7 @@
             // 
             txtEmail.Location = new Point(442, 43);
             txtEmail.Name = "txtEmail";
+            txtEmail.ReadOnly = true;
             txtEmail.Size = new Size(330, 23);
             txtEmail.TabIndex = 2;
             // 
@@ -384,6 +399,7 @@
             // 
             txtNome.Location = new Point(151, 43);
             txtNome.Name = "txtNome";
+            txtNome.ReadOnly = true;
             txtNome.Size = new Size(266, 23);
             txtNome.TabIndex = 1;
             // 
@@ -400,6 +416,7 @@
             // 
             txtCodigo.Location = new Point(21, 43);
             txtCodigo.Name = "txtCodigo";
+            txtCodigo.ReadOnly = true;
             txtCodigo.Size = new Size(100, 23);
             txtCodigo.TabIndex = 0;
             // 
@@ -425,6 +442,7 @@
             btnNovo.Text = "Novo";
             btnNovo.TextAlign = ContentAlignment.MiddleRight;
             btnNovo.UseVisualStyleBackColor = true;
+            btnNovo.Click += btnNovo_Click;
             // 
             // imlIcones
             // 
@@ -440,6 +458,7 @@
             // 
             // btnEditar
             // 
+            btnEditar.Enabled = false;
             btnEditar.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnEditar.ImageAlign = ContentAlignment.MiddleLeft;
             btnEditar.ImageIndex = 1;
@@ -454,6 +473,7 @@
             // 
             // btnSalvar
             // 
+            btnSalvar.Enabled = false;
             btnSalvar.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSalvar.ImageAlign = ContentAlignment.MiddleLeft;
             btnSalvar.ImageIndex = 5;
@@ -469,6 +489,7 @@
             // 
             // btnExcluir
             // 
+            btnExcluir.Enabled = false;
             btnExcluir.ImageAlign = ContentAlignment.MiddleLeft;
             btnExcluir.ImageIndex = 2;
             btnExcluir.ImageList = imlIcones;
@@ -482,6 +503,7 @@
             // 
             // btnCancelar
             // 
+            btnCancelar.Enabled = false;
             btnCancelar.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnCancelar.ImageAlign = ContentAlignment.MiddleLeft;
             btnCancelar.ImageIndex = 0;
@@ -494,6 +516,7 @@
             btnCancelar.Text = "Cancelar";
             btnCancelar.TextAlign = ContentAlignment.MiddleRight;
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // txtPesquisar
             // 
