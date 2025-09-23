@@ -37,12 +37,12 @@ namespace SistemaAtendimento.Controller
 
         public void Salvar(Clientes cliente)
         {
-            
+
             try
             {
                 _clienteRepository.Inserir(cliente);
                 _frmCadastroCliente.ExibirMensagem("Cliente cadastrado com Sucesso!");
-               
+
                 //Atualizar DataGrid
                 ListarClientes();
 
@@ -52,6 +52,27 @@ namespace SistemaAtendimento.Controller
             catch (Exception ex)
             {
                 _frmCadastroCliente.ExibirMensagem($"Erro ao Cadastrar o cliente: {ex.Message}");
+            }
+        }
+
+        
+        public void Atualizar(Clientes cliente)
+        {
+
+            try
+            {
+                _clienteRepository.Atualizar(cliente);
+                _frmCadastroCliente.ExibirMensagem("Cliente Atualizado com Sucesso!");
+
+                //Atualizar DataGrid
+                ListarClientes();
+
+                _frmCadastroCliente.DesabilitarCampos();
+
+            }
+            catch (Exception ex)
+            {
+                _frmCadastroCliente.ExibirMensagem($"Erro ao Aualizar o cliente: {ex.Message}");
             }
         }
     }
