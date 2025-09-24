@@ -46,8 +46,17 @@ namespace SistemaAtendimento.View
             };
             if (!ValidarDados(etapa))
                 return;
+            if (string.IsNullOrEmpty(txtCodigo.Text))
+            {
 
-            _etapaController.Salvar(etapa);
+                _etapaController.Salvar(etapa);
+            }
+            else
+            {
+                etapa.Id = Convert.ToInt32(txtCodigo.Text);
+                _etapaController.Atualizar(etapa);
+            }
+
         }
         public bool ValidarDados(Etapas etapas)
         {
@@ -84,6 +93,7 @@ namespace SistemaAtendimento.View
         }
         public void DesabilitarCampos()
         {
+            LimparCampos();
             txtNome.ReadOnly = true;
             txtOrdem.ReadOnly = true;
             pnlSituacao.Enabled = false;
@@ -103,6 +113,42 @@ namespace SistemaAtendimento.View
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             DesabilitarCampos();
+        }
+
+        private void dgvListaEtapas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+
+                DataGridViewRow LinhaSelecionada = dgvListaEtapas.Rows[e.RowIndex];
+
+                txtCodigo.Text = LinhaSelecionada.Cells["Id"].Value.ToString();
+
+                txtNome.Text = LinhaSelecionada.Cells["Nome"].Value.ToString();
+
+                txtOrdem.Text = LinhaSelecionada.Cells["Ordem"].Value.ToString();
+
+                rdbAtivo.Checked = Convert.ToBoolean(LinhaSelecionada.Cells["Ativo"].Value);
+
+                rdbInativo.Checked = !Convert.ToBoolean(LinhaSelecionada.Cells["Ativo"].Value);
+
+
+                // Habilitar os botões de editar e excluir
+
+                btnEditar.Enabled = true;
+
+                btnNovo.Enabled = false;
+
+                btnCancelar.Enabled = true;
+
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            HabilitarCampos();
+
+            btnEditar.Enabled = false;
         }
     }
 }

@@ -203,6 +203,7 @@
             btnEditar.Text = "Editar";
             btnEditar.TextAlign = ContentAlignment.MiddleRight;
             btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnSalvar
             // 
@@ -289,9 +290,13 @@
             // 
             dgvListaEtapas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvListaEtapas.Location = new Point(8, 24);
+            dgvListaEtapas.MultiSelect = false;
             dgvListaEtapas.Name = "dgvListaEtapas";
+            dgvListaEtapas.ReadOnly = true;
+            dgvListaEtapas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvListaEtapas.Size = new Size(768, 150);
             dgvListaEtapas.TabIndex = 0;
+            dgvListaEtapas.CellDoubleClick += dgvListaEtapas_CellDoubleClick;
             // 
             // FrmCadastroEtapa
             // 
