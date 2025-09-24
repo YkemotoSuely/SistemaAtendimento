@@ -75,5 +75,26 @@ namespace SistemaAtendimento.Controller
                 _frmCadastroCliente.ExibirMensagem($"Erro ao Aualizar o cliente: {ex.Message}");
             }
         }
+
+        public void Excluir(int id)
+        {
+            try
+            {
+                _clienteRepository.Excluir(id);
+
+                _frmCadastroCliente.ExibirMensagem("Cliente excluído com Sucesso!");
+
+                ListarClientes();
+
+                _frmCadastroCliente.DesabilitarCampos();
+
+
+            }
+            catch (Exception ex)
+            {
+                _frmCadastroCliente.ExibirMensagem($"Erro ao Excluir o cliente: {ex.Message}");
+            }
+
+        }
     }
 }
