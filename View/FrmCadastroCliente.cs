@@ -58,7 +58,16 @@ namespace SistemaAtendimento
             if (!ValidarDados(cliente))
                 return;
 
-            _clienteController.Salvar(cliente);
+            if (string.IsNullOrEmpty(txtCodigo.Text))
+            {
+                _clienteController.Salvar(cliente);
+            }
+            else
+            {
+                cliente.Id = Convert.ToInt32(txtCodigo.Text);
+                _clienteController.Atualizar(cliente);
+            }
+                
 
 
         }
@@ -78,38 +87,36 @@ namespace SistemaAtendimento
                 return false;
             }
 
-            if (rdbFisica.Checked)
+            if (string.IsNullOrWhiteSpace(txtCpfCnpj.Text))
             {
-                if (string.IsNullOrWhiteSpace(txtCpfCnpj.Text))
+                if (rdbFisica.Checked)
                 {
-                    ExibirMensagem("O campo CPF é obrigatório");
-                    txtCpfCnpj.Focus();
-                    return false;
+                    ExibirMensagem("O Campo CPF é Obrigatório");
+
                 }
                 else
                 {
-                    ExibirMensagem("O campo CNPJ é obrigatório");
-
+                    ExibirMensagem("O Campo CNPJ é Obrigatório");
                 }
+
                 txtCpfCnpj.Focus();
                 return false;
-
             }
             else
             {
                 if (rdbFisica.Checked)
                 {
-                    //verificar se o CPF é válido
+                    //verficar se o cpf é valido
+
+
                 }
                 else
                 {
-                    //verifica se o CNPJ é válido
+                    //verificar se o cnpj é valido
                 }
-
             }
 
-
-            if (string.IsNullOrWhiteSpace(txtCep.Text))
+                if (string.IsNullOrWhiteSpace(txtCep.Text))
             {
                 ExibirMensagem("O campo CEP é obrigatório");
                 txtCep.Focus();
@@ -216,6 +223,7 @@ namespace SistemaAtendimento
 
         public void DesabilitarCampos()
         {
+            LimparCampos();
             txtNome.ReadOnly = true;
             txtEmail.ReadOnly = true;
             txtTelefone.ReadOnly = true;
@@ -247,5 +255,74 @@ namespace SistemaAtendimento
         {
             DesabilitarCampos();
         }
+
+        private void dgvClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+
+        {
+
+            if (e.RowIndex >= 0)
+            {
+
+                DataGridViewRow LinhaSelecionada = dgvClientes.Rows[e.RowIndex];
+
+                txtCodigo.Text = LinhaSelecionada.Cells["Id"].Value.ToString();
+
+                txtNome.Text = LinhaSelecionada.Cells["Nome"].Value.ToString();
+
+                txtEmail.Text = LinhaSelecionada.Cells["Email"].Value.ToString();
+
+                txtCpfCnpj.Text = LinhaSelecionada.Cells["Cpf_Cnpj"].Value.ToString();
+
+                txtTelefone.Text = LinhaSelecionada.Cells["Telefone"].Value.ToString();
+
+                txtCelular.Text = LinhaSelecionada.Cells["Celular"].Value.ToString();
+
+                txtCep.Text = LinhaSelecionada.Cells["Cep"].Value.ToString();
+
+                txtEndereco.Text = LinhaSelecionada.Cells["Endereco"].Value.ToString();
+
+                txtNumero.Text = LinhaSelecionada.Cells["Numero"].Value.ToString();
+
+                txtComplemento.Text = LinhaSelecionada.Cells["Complemento"].Value.ToString();
+
+                txtBairro.Text = LinhaSelecionada.Cells["Bairro"].Value.ToString();
+
+                txtCidade.Text = LinhaSelecionada.Cells["Cidade"].Value.ToString();
+
+                cbxEstado.Text = LinhaSelecionada.Cells["Estado"].Value.ToString();
+
+                rdbFisica.Checked = LinhaSelecionada.Cells["TipoPessoa"].Value.ToString() == "F";
+
+                rdbJuridica.Checked = LinhaSelecionada.Cells["TipoPessoa"].Value.ToString() == "J";
+
+                rdbAtivo.Checked = Convert.ToBoolean(LinhaSelecionada.Cells["Ativo"].Value);
+
+                rdbInativo.Checked = !Convert.ToBoolean(LinhaSelecionada.Cells["Ativo"].Value);
+
+                // Habilitar os botões de editar e excluir
+
+                btnEditar.Enabled = true;
+
+                btnNovo.Enabled = false;
+
+                btnCancelar.Enabled = true;
+
+            }
+
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+
+        {
+
+            HabilitarCampos();
+
+            btnEditar.Enabled = false;
+
+        }
+
     }
+
+
 }
+
