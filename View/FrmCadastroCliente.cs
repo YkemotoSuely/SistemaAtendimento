@@ -67,7 +67,7 @@ namespace SistemaAtendimento
                 cliente.Id = Convert.ToInt32(txtCodigo.Text);
                 _clienteController.Atualizar(cliente);
             }
-                
+
 
 
         }
@@ -116,7 +116,7 @@ namespace SistemaAtendimento
                 }
             }
 
-                if (string.IsNullOrWhiteSpace(txtCep.Text))
+            if (string.IsNullOrWhiteSpace(txtCep.Text))
             {
                 ExibirMensagem("O campo CEP é obrigatório");
                 txtCep.Focus();
@@ -307,6 +307,8 @@ namespace SistemaAtendimento
 
                 btnCancelar.Enabled = true;
 
+                btnExcluir.Enabled = true;
+
             }
 
         }
@@ -321,6 +323,22 @@ namespace SistemaAtendimento
 
         }
 
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCodigo.Text)) 
+            {
+                ExibirMensagem("Selecione Cliente");
+                return; 
+            }
+
+            DialogResult resultado = MessageBox.Show("Deseja excluir este Cliente?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            { 
+                int id = Convert.ToInt32(txtCodigo.Text);
+                _clienteController.Excluir(id);
+            }
+        }
     }
 
 

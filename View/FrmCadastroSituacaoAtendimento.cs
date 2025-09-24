@@ -46,7 +46,7 @@ namespace SistemaAtendimento.View
 
         }
 
-        private void btnSalvar_Click(object sender, EventArgs e)
+       /* private void btnSalvar_Click(object sender, EventArgs e)
         {
             SituacaoAtendimentos situacaoAtendimentos = new SituacaoAtendimentos
             {
@@ -83,7 +83,8 @@ namespace SistemaAtendimento.View
                 return false;
             }
             //terminar na próxima aula
-        }
+        }*/
 
     }
+}
 
