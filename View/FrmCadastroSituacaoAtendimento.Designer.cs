@@ -63,6 +63,7 @@
             // 
             txtCodigo.Location = new Point(16, 48);
             txtCodigo.Name = "txtCodigo";
+            txtCodigo.ReadOnly = true;
             txtCodigo.Size = new Size(136, 23);
             txtCodigo.TabIndex = 0;
             // 
@@ -123,6 +124,7 @@
             // 
             pnlSituacao.Controls.Add(rdbInativo);
             pnlSituacao.Controls.Add(rdbAtivo);
+            pnlSituacao.Enabled = false;
             pnlSituacao.Location = new Point(264, 112);
             pnlSituacao.Name = "pnlSituacao";
             pnlSituacao.Size = new Size(168, 32);
@@ -154,6 +156,7 @@
             // 
             txtCor.Location = new Point(16, 120);
             txtCor.Name = "txtCor";
+            txtCor.ReadOnly = true;
             txtCor.Size = new Size(184, 23);
             txtCor.TabIndex = 2;
             // 
@@ -161,6 +164,7 @@
             // 
             txtNome.Location = new Point(216, 48);
             txtNome.Name = "txtNome";
+            txtNome.ReadOnly = true;
             txtNome.Size = new Size(440, 23);
             txtNome.TabIndex = 1;
             // 
@@ -177,6 +181,7 @@
             btnCancelar.Text = "Cancelar";
             btnCancelar.TextAlign = ContentAlignment.MiddleRight;
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // imageList1
             // 
@@ -192,6 +197,7 @@
             // 
             // btnExcluir
             // 
+            btnExcluir.Enabled = false;
             btnExcluir.ImageAlign = ContentAlignment.MiddleLeft;
             btnExcluir.ImageIndex = 2;
             btnExcluir.ImageList = imageList1;
@@ -205,6 +211,7 @@
             // 
             // btnSalvar
             // 
+            btnSalvar.Enabled = false;
             btnSalvar.ImageAlign = ContentAlignment.MiddleLeft;
             btnSalvar.ImageIndex = 5;
             btnSalvar.ImageList = imageList1;
@@ -218,6 +225,7 @@
             // 
             // btnEditar
             // 
+            btnEditar.Enabled = false;
             btnEditar.ImageAlign = ContentAlignment.MiddleLeft;
             btnEditar.ImageIndex = 1;
             btnEditar.ImageList = imageList1;
@@ -241,6 +249,7 @@
             btnNovo.Text = "Novo";
             btnNovo.TextAlign = ContentAlignment.MiddleRight;
             btnNovo.UseVisualStyleBackColor = true;
+            btnNovo.Click += btnNovo_Click;
             // 
             // btnPesquisar
             // 
@@ -256,6 +265,7 @@
             // 
             txtPesquisar.Location = new Point(464, 224);
             txtPesquisar.Name = "txtPesquisar";
+            txtPesquisar.ReadOnly = true;
             txtPesquisar.Size = new Size(280, 23);
             txtPesquisar.TabIndex = 13;
             // 

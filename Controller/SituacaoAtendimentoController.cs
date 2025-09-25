@@ -2,6 +2,8 @@
 
 using System.Collections.Generic;
 
+using SistemaAtendimento.Model;
+
 using SistemaAtendimento.Repositories;
 
 using SistemaAtendimento.View;
@@ -47,6 +49,36 @@ namespace SistemaAtendimento.Controller
             {
 
                 _frmCadastroSituacaoAtendimento.ExibirMensagem($"Erro ao carregar as situações de atendimento: {ex.Message}");
+
+            }
+
+        }
+
+        public void Salvar(SituacaoAtendimentos situacaoAtendimento)
+
+        {
+
+            try
+
+            {
+
+                _situacaoAtendimentoRepository.Inserir(situacaoAtendimento);
+
+                _frmCadastroSituacaoAtendimento.ExibirMensagem($" Situacao de Atendimento cadastrado com Sucesso:");
+
+                //atualizar dataGrid 
+
+                ListarSituacaoAtendimentos();
+
+                _frmCadastroSituacaoAtendimento.DesabilitarCampos();
+
+            }
+
+            catch (Exception ex)
+
+            {
+
+                _frmCadastroSituacaoAtendimento.ExibirMensagem($"Erro ao Cadastrar a Situacao de Atendimento: {ex.Message}");
 
             }
 

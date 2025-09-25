@@ -218,6 +218,8 @@ namespace SistemaAtendimento
             txtCidade.Clear();
             txtBairro.Clear();
             cbxEstado.Text = "";
+            rdbAtivo.Checked = true;
+            rdbFisica.Checked = true;
 
         }
 
