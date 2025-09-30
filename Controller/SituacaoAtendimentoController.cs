@@ -83,6 +83,41 @@ namespace SistemaAtendimento.Controller
             }
 
         }
+        public void Atualizar(SituacaoAtendimentos situacaoAtendimento)
+        {
+
+            try
+            {
+                _situacaoAtendimentoRepository.Atualizar(situacaoAtendimento);
+
+                _frmCadastroSituacaoAtendimento.ExibirMensagem($" Situacao de Atendimento atualizado com Sucesso:");
+
+                //atualizar dataGrid 
+
+                ListarSituacaoAtendimentos();
+
+                _frmCadastroSituacaoAtendimento.DesabilitarCampos();
+            }
+            catch (Exception ex)
+            {
+                _frmCadastroSituacaoAtendimento.ExibirMensagem($"Erro ao atualizar a Situacao de Atendimento: {ex.Message}");
+            }
+        }
+        public void Excluir(int id)
+        {
+            try
+            {
+                _situacaoAtendimentoRepository.Excluir(id);
+                _frmCadastroSituacaoAtendimento.ExibirMensagem("Situação de Atendimento excluído com sucesso");
+                ListarSituacaoAtendimentos();
+
+                _frmCadastroSituacaoAtendimento.DesabilitarCampos();
+            }
+            catch (Exception ex)
+            {
+                _frmCadastroSituacaoAtendimento.ExibirMensagem($"Erro ao excluir a Situação de Atendimento: {ex.Message}");
+            }
+        }
 
     }
 

@@ -208,6 +208,7 @@
             btnExcluir.Text = "Excluir";
             btnExcluir.TextAlign = ContentAlignment.MiddleRight;
             btnExcluir.UseVisualStyleBackColor = true;
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // btnSalvar
             // 
@@ -222,6 +223,7 @@
             btnSalvar.Text = "Salvar";
             btnSalvar.TextAlign = ContentAlignment.MiddleRight;
             btnSalvar.UseVisualStyleBackColor = true;
+            btnSalvar.Click += btnSalvar_Click;
             // 
             // btnEditar
             // 
@@ -236,6 +238,7 @@
             btnEditar.Text = "Editar";
             btnEditar.TextAlign = ContentAlignment.MiddleRight;
             btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnNovo
             // 
@@ -285,6 +288,7 @@
             dgvListaSituacaoAtendimento.Name = "dgvListaSituacaoAtendimento";
             dgvListaSituacaoAtendimento.Size = new Size(768, 150);
             dgvListaSituacaoAtendimento.TabIndex = 0;
+            dgvListaSituacaoAtendimento.CellDoubleClick += dgvListaSituacaoAtendimento_CellDoubleClick;
             // 
             // grbListaSituacaoAtendimento
             // 

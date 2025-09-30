@@ -198,6 +198,61 @@ namespace SistemaAtendimento.View
 
         }
 
+        private void dgvListaSituacaoAtendimento_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+
+                DataGridViewRow LinhaSelecionada = dgvListaSituacaoAtendimento.Rows[e.RowIndex];
+
+                txtCodigo.Text = LinhaSelecionada.Cells["Id"].Value.ToString();
+
+                txtNome.Text = LinhaSelecionada.Cells["Nome"].Value.ToString();
+
+                txtCor.Text = LinhaSelecionada.Cells["Cor"].Value.ToString();
+
+                rdbAtivo.Checked = Convert.ToBoolean(LinhaSelecionada.Cells["Ativo"].Value);
+
+                rdbInativo.Checked = !Convert.ToBoolean(LinhaSelecionada.Cells["Ativo"].Value);
+
+                // Habilitar os botões de editar e excluir
+
+                btnEditar.Enabled = true;
+
+                btnNovo.Enabled = false;
+
+                btnCancelar.Enabled = true;
+
+                btnExcluir.Enabled = true;
+
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+
+            HabilitarCampos();
+
+            btnEditar.Enabled = false;
+
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCodigo.Text))
+            {
+                ExibirMensagem("Selecione uma Situação de Atendimento");
+                return;
+            }
+
+            DialogResult resultado = MessageBox.Show("Deseja excluir esta Situação de Atendimento?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                int id = Convert.ToInt32(txtCodigo.Text);
+                _situacaoAtendimentoController.Excluir(id);
+            }
+        }
     }
 
 }
