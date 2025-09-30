@@ -123,7 +123,7 @@ namespace SistemaAtendimento.Repositories
         {
             using (var conexao = ConexaoDB.GetConexao())
             {
-                string sql = "DELETE FROM situação_atendimentos WHERE id=@id";
+                string sql = "DELETE FROM situacao_atendimentos WHERE id=@id";
 
                 using (var comando = new SqlCommand(sql, conexao))
                 {
