@@ -342,7 +342,7 @@ namespace SistemaAtendimento
                 _clienteController.Excluir(id);
             }
         }
-        private async Task BuscarEnderecoPorCep(string cep)  // "Task" representa uma função assincrona
+        /*private async Task BuscarEnderecoPorCep(string cep)  // "Task" representa uma função assincrona
         {
             try
             {
@@ -372,6 +372,45 @@ namespace SistemaAtendimento
             {
                 ExibirMensagem($"Erro ao buscar o endereço: {ex.Message}");
             }
+        }*/
+        private async Task BuscarEnderecoPorCep(string cep)
+        {
+            try
+            {
+                cep = cep.Replace("-", "").Trim();
+
+                using (HttpClient client = new HttpClient())
+                {
+                    string url = $"https://viacep.com.br/ws/{cep}/json/";
+
+                    var response = await client.GetAsync(url);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string json = await response.Content.ReadAsStringAsync();
+                        var dadosEndereco = JsonConvert.DeserializeObject<Endereco>(json);
+
+                        if (dadosEndereco == null || dadosEndereco.Erro)
+                        {
+                            ExibirMensagem("CEP inválido ou não encontrado.");
+                            return;
+                        }
+
+                        txtEndereco.Text = dadosEndereco.Logradouro;
+                        txtBairro.Text = dadosEndereco.Bairro;
+                        txtCidade.Text = dadosEndereco.Localidade;
+                        cbxEstado.Text = dadosEndereco.Uf;
+                    }
+                    else
+                    {
+                        ExibirMensagem("Erro na comunicação com o serviço de CEP.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExibirMensagem($"Erro ao buscar o endereço: {ex.Message}");
+            }
         }
 
         private async void txtCep_Leave(object sender, EventArgs e)
@@ -382,6 +421,16 @@ namespace SistemaAtendimento
             
             }
         }
+
+        public class Endereco
+        {
+            public string? Logradouro { get; set; }
+            public string? Bairro { get; set; }
+            public string? Localidade { get; set; }
+            public string? Uf { get; set; }
+            public bool Erro { get; set; }  // Indica se houve erro na busca
+        }
+
     }
 
 

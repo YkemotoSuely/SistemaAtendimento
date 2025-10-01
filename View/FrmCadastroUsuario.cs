@@ -36,5 +36,167 @@ namespace SistemaAtendimento.View
         {
             _usuarioController.ListarUsuarios();
         }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            Usuarios usuario = new Usuarios
+            {
+                Nome = txtNome.Text,
+                Email = txtEmail.Text,
+                Senha = txtSenha.Text,
+                Perfil = cbxPerfil.Text,
+
+            };
+            if (!ValidarDados(usuario))
+                return;
+
+            if (string.IsNullOrEmpty(txtCodigo.Text))
+
+            {
+                _usuarioController.Salvar(usuario);
+            }
+            else
+            {
+                usuario.Id = Convert.ToInt32(txtCodigo.Text);
+                _usuarioController.Atualizar(usuario);
+            }
+
+
+
+        }
+        public bool ValidarDados(Usuarios usuarios)
+        {
+            if (string.IsNullOrWhiteSpace(txtNome.Text))
+            {
+                ExibirMensagem("O campo nome é obrigatório");
+                txtNome.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                ExibirMensagem("O campo email é obrigatório");
+                txtEmail.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtSenha.Text))
+            {
+                ExibirMensagem("O campo senha é obrigatório");
+                txtSenha.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(cbxPerfil.Text))
+            {
+                ExibirMensagem("O campo perfil é obrigatório");
+                cbxPerfil.Focus();
+                return false;
+            }
+            return true;
+
+        }
+        private void HabilitarCampos()
+        {
+            txtNome.ReadOnly = false;
+            txtEmail.ReadOnly = false;
+            txtSenha.ReadOnly = false;
+            cbxPerfil.Enabled = true;
+
+
+            btnNovo.Enabled = false;
+            btnSalvar.Enabled = true;
+            btnCancelar.Enabled = true;
+        }
+
+        private void LimparCampos()
+        {
+            txtCodigo.Clear();
+            txtNome.Clear();
+            txtEmail.Clear();
+            txtSenha.Clear();
+            cbxPerfil.Text = "";
+
+        }
+
+        public void DesabilitarCampos()
+        {
+            LimparCampos();
+            txtNome.ReadOnly = true;
+            txtEmail.ReadOnly = true;
+            txtSenha.ReadOnly = true;
+            cbxPerfil.Enabled = false;
+
+            btnNovo.Enabled = true;
+            btnSalvar.Enabled = false;
+            btnCancelar.Enabled = false;
+            btnEditar.Enabled = false;
+            btnExcluir.Enabled = false;
+        }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            HabilitarCampos();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            DesabilitarCampos();
+
+        }
+
+        private void dgvUsuarios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+
+                DataGridViewRow LinhaSelecionada = dgvUsuarios.Rows[e.RowIndex];
+
+                txtCodigo.Text = LinhaSelecionada.Cells["Id"].Value.ToString();
+
+                txtNome.Text = LinhaSelecionada.Cells["Nome"].Value.ToString();
+
+                txtEmail.Text = LinhaSelecionada.Cells["Email"].Value.ToString();
+
+                txtSenha.Text = LinhaSelecionada.Cells["Senha"].Value.ToString();
+
+                cbxPerfil.Text = LinhaSelecionada.Cells["Perfil"].Value.ToString();
+
+
+                // Habilitar os botões de editar e excluir
+
+                btnEditar.Enabled = true;
+
+                btnNovo.Enabled = false;
+
+                btnCancelar.Enabled = true;
+
+                btnExcluir.Enabled = true;
+
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            HabilitarCampos();
+
+            btnEditar.Enabled = false;
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCodigo.Text))
+            {
+                ExibirMensagem("Selecione Usuário");
+                return;
+            }
+
+            DialogResult resultado = MessageBox.Show("Deseja excluir este Usuário?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                int id = Convert.ToInt32(txtCodigo.Text);
+                _usuarioController.Excluir(id);
+            }
+        }
     }
 }

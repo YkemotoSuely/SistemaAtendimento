@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SistemaAtendimento.Model;
 using SistemaAtendimento.Repositories;
 using SistemaAtendimento.View;
 
@@ -29,6 +30,57 @@ namespace SistemaAtendimento.Controller
             catch (Exception ex)
             {
                 _frmCadastroUsuario.ExibirMensagem($" Erro ao carregar os usuários: {ex.Message}");
+            }
+        }
+        public void Salvar(Usuarios usuario)
+        {
+
+            try
+            {
+                _usuarioRepository.Inserir(usuario);
+                _frmCadastroUsuario.ExibirMensagem("Usuário cadastrado com sucesso");
+
+                //atualizar DataGrid
+                ListarUsuarios();
+
+                _frmCadastroUsuario.DesabilitarCampos();
+            }
+            catch (Exception ex)
+            {
+                _frmCadastroUsuario.ExibirMensagem($"Erro ao cadastrar o usuário: {ex.Message}");
+            }
+        }
+        public void Atualizar(Usuarios usuario)
+        {
+
+            try
+            {
+                _usuarioRepository.Atualizar(usuario);
+                _frmCadastroUsuario.ExibirMensagem("Usuário atualizado com sucesso");
+
+                //atualizar DataGrid
+                ListarUsuarios();
+
+                _frmCadastroUsuario.DesabilitarCampos();
+            }
+            catch (Exception ex)
+            {
+                _frmCadastroUsuario.ExibirMensagem($"Erro ao atualizar o usuário: {ex.Message}");
+            }
+        }
+        public void Excluir(int id)
+        {
+            try
+            {
+                _usuarioRepository.Excluir(id);
+                _frmCadastroUsuario.ExibirMensagem("Usuário excluído com sucesso");
+                ListarUsuarios();
+
+                _frmCadastroUsuario.DesabilitarCampos();
+            }
+            catch (Exception ex)
+            {
+                _frmCadastroUsuario.ExibirMensagem($"Erro ao excluir o usuário: {ex.Message}");
             }
         }
 

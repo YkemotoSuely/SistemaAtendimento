@@ -79,6 +79,7 @@
             // 
             // cbxPerfil
             // 
+            cbxPerfil.Enabled = false;
             cbxPerfil.FormattingEnabled = true;
             cbxPerfil.Items.AddRange(new object[] { "Administrador", "Usuário" });
             cbxPerfil.Location = new Point(544, 120);
@@ -99,6 +100,7 @@
             // 
             txtSenha.Location = new Point(352, 120);
             txtSenha.Name = "txtSenha";
+            txtSenha.ReadOnly = true;
             txtSenha.Size = new Size(160, 25);
             txtSenha.TabIndex = 3;
             // 
@@ -115,6 +117,7 @@
             // 
             txtEmail.Location = new Point(16, 120);
             txtEmail.Name = "txtEmail";
+            txtEmail.ReadOnly = true;
             txtEmail.Size = new Size(312, 25);
             txtEmail.TabIndex = 2;
             // 
@@ -131,6 +134,7 @@
             // 
             txtNome.Location = new Point(152, 56);
             txtNome.Name = "txtNome";
+            txtNome.ReadOnly = true;
             txtNome.Size = new Size(600, 25);
             txtNome.TabIndex = 1;
             // 
@@ -147,6 +151,7 @@
             // 
             txtCodigo.Location = new Point(16, 56);
             txtCodigo.Name = "txtCodigo";
+            txtCodigo.ReadOnly = true;
             txtCodigo.Size = new Size(112, 25);
             txtCodigo.TabIndex = 0;
             // 
@@ -172,6 +177,7 @@
             btnNovo.Text = "Novo";
             btnNovo.TextAlign = ContentAlignment.MiddleRight;
             btnNovo.UseVisualStyleBackColor = true;
+            btnNovo.Click += btnNovo_Click;
             // 
             // imlicones
             // 
@@ -187,6 +193,7 @@
             // 
             // btnEditar
             // 
+            btnEditar.Enabled = false;
             btnEditar.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnEditar.ImageAlign = ContentAlignment.MiddleLeft;
             btnEditar.ImageIndex = 1;
@@ -198,9 +205,11 @@
             btnEditar.Text = "Editar";
             btnEditar.TextAlign = ContentAlignment.MiddleRight;
             btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnSalvar
             // 
+            btnSalvar.Enabled = false;
             btnSalvar.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSalvar.ImageAlign = ContentAlignment.MiddleLeft;
             btnSalvar.ImageIndex = 5;
@@ -212,9 +221,11 @@
             btnSalvar.Text = "Salvar";
             btnSalvar.TextAlign = ContentAlignment.MiddleRight;
             btnSalvar.UseVisualStyleBackColor = true;
+            btnSalvar.Click += btnSalvar_Click;
             // 
             // btnExcluir
             // 
+            btnExcluir.Enabled = false;
             btnExcluir.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnExcluir.ImageAlign = ContentAlignment.MiddleLeft;
             btnExcluir.ImageIndex = 2;
@@ -226,9 +237,11 @@
             btnExcluir.Text = "Excluir";
             btnExcluir.TextAlign = ContentAlignment.MiddleRight;
             btnExcluir.UseVisualStyleBackColor = true;
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // btnCancelar
             // 
+            btnCancelar.Enabled = false;
             btnCancelar.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnCancelar.ImageAlign = ContentAlignment.MiddleLeft;
             btnCancelar.ImageIndex = 0;
@@ -240,6 +253,7 @@
             btnCancelar.Text = "Cancelar";
             btnCancelar.TextAlign = ContentAlignment.MiddleRight;
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnPesquisar
             // 
@@ -269,6 +283,7 @@
             dgvUsuarios.Name = "dgvUsuarios";
             dgvUsuarios.Size = new Size(736, 152);
             dgvUsuarios.TabIndex = 0;
+            dgvUsuarios.CellDoubleClick += dgvUsuarios_CellDoubleClick;
             // 
             // txtPesquisar
             // 
