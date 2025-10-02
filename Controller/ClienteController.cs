@@ -20,11 +20,11 @@ namespace SistemaAtendimento.Controller
             
         }
 
-        public void ListarClientes() // a função try cath, testa o algoritmo dentro do escopo "try" e ,caso, dê erro retorna a mensagem declarada dentro do escopo "cath"
+        public void ListarClientes(string termo = "") // a função try cath, testa o algoritmo dentro do escopo "try" e ,caso, dê erro retorna a mensagem declarada dentro do escopo "cath"
         {
             try
             {
-                var listaClientes = _clienteRepository.Listar();
+                var listaClientes = _clienteRepository.Listar(termo);
 
                 _frmCadastroCliente.ExibirClientes(listaClientes);
             } 

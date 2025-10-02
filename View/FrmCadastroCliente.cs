@@ -416,9 +416,9 @@ namespace SistemaAtendimento
         private async void txtCep_Leave(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtCep.Text))
-            { 
+            {
                 await BuscarEnderecoPorCep(txtCep.Text);
-            
+
             }
         }
 
@@ -431,6 +431,11 @@ namespace SistemaAtendimento
             public bool Erro { get; set; }  // Indica se houve erro na busca
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string termo = txtPesquisar.Text.Trim();
+            _clienteController.ListarClientes(termo);
+        }
     }
 
 
