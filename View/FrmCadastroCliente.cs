@@ -339,6 +339,12 @@ namespace SistemaAtendimento
 
                         dynamic? dadosEndereco = JsonConvert.DeserializeObject(json);
 
+                        if (dadosEndereco?.ContainsKey("erro") && (bool)dadosEndereco?.erro)
+                        {
+                            ExibirMensagem("CEP não encontrado. Verifique e tente novamente.");
+                            return;
+                        }
+
                         txtEndereco.Text = dadosEndereco?.logradouro;
                         txtBairro.Text = dadosEndereco?.bairro;
                         txtCidade.Text = dadosEndereco?.localidade;
@@ -346,7 +352,7 @@ namespace SistemaAtendimento
 
                     }
 
-                    }
+                }
             }
             catch (Exception ex)
             {
@@ -361,5 +367,13 @@ namespace SistemaAtendimento
                 await BuscarEnderecoPorCep(txtCep.Text);
             }
         }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            string termo = txtPesquisar.Text.Trim();
+            _clienteController.ListarClientes(termo);
+        }
+
+        
     }
 }
