@@ -150,6 +150,23 @@ namespace SistemaAtendimento.View
 
             btnEditar.Enabled = false;
         }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCodigo.Text))
+            {
+                ExibirMensagem("Selecione Etapa");
+                return;
+            }
+
+            DialogResult resultado = MessageBox.Show("Deseja excluir esta etapa?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                int id = Convert.ToInt32(txtCodigo.Text);
+                _etapaController.Excluir(id);
+            }
+        }
     }
 }
 

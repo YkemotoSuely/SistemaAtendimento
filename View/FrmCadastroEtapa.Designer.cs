@@ -150,8 +150,10 @@
             // 
             // txtCodigo
             // 
+            txtCodigo.ImeMode = ImeMode.NoControl;
             txtCodigo.Location = new Point(16, 48);
             txtCodigo.Name = "txtCodigo";
+            txtCodigo.ReadOnly = true;
             txtCodigo.Size = new Size(128, 23);
             txtCodigo.TabIndex = 1;
             // 
@@ -233,10 +235,10 @@
             btnExcluir.Text = "Excluir";
             btnExcluir.TextAlign = ContentAlignment.MiddleRight;
             btnExcluir.UseVisualStyleBackColor = true;
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // btnCancelar
             // 
-            btnCancelar.DialogResult = DialogResult.Continue;
             btnCancelar.Enabled = false;
             btnCancelar.ImageAlign = ContentAlignment.MiddleLeft;
             btnCancelar.ImageIndex = 0;
