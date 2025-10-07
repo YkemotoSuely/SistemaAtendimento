@@ -11,13 +11,18 @@ namespace SistemaAtendimento.Repositories
         /// <summary>
         /// Lista todas as etapas cadastradas no banco de dados.
         /// </summary>
-        public List<Etapas> Listar()
+        public List<Etapas> Listar(string termo = "")
         {
             var etapas = new List<Etapas>();
 
             using (var conexao = ConexaoDB.GetConexao())
             {
                 string sql = "SELECT * FROM Etapas";
+
+                if (!string.IsNullOrEmpty(termo))
+                {
+                    sql = "SELECT * FROM etapas where nome LIKE @termo OR email LIKE @termo";
+                }
 
                 using (var comando = new SqlCommand(sql, conexao))
                 {

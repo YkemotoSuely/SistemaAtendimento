@@ -73,7 +73,7 @@
             btnSalvar = new Button();
             btnExcluir = new Button();
             btnCancelar = new Button();
-            button1 = new Button();
+            btnPesquisar = new Button();
             grbListaClientes = new GroupBox();
             dgvClientes = new DataGridView();
             grbDadosCliente.SuspendLayout();
@@ -537,16 +537,16 @@
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
             // 
-            // button1
+            // btnPesquisar
             // 
-            button1.ImageKey = "icone-pesquisar.png";
-            button1.ImageList = imlicones;
-            button1.Location = new Point(800, 312);
-            button1.Name = "button1";
-            button1.Size = new Size(40, 40);
-            button1.TabIndex = 21;
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnPesquisar.ImageKey = "icone-pesquisar.png";
+            btnPesquisar.ImageList = imlicones;
+            btnPesquisar.Location = new Point(800, 312);
+            btnPesquisar.Name = "btnPesquisar";
+            btnPesquisar.Size = new Size(40, 40);
+            btnPesquisar.TabIndex = 21;
+            btnPesquisar.UseVisualStyleBackColor = true;
+            btnPesquisar.Click += button1_Click;
             // 
             // grbListaClientes
             // 
@@ -576,7 +576,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(862, 581);
             Controls.Add(grbListaClientes);
-            Controls.Add(button1);
+            Controls.Add(btnPesquisar);
             Controls.Add(btnCancelar);
             Controls.Add(btnExcluir);
             Controls.Add(btnSalvar);
@@ -644,7 +644,7 @@
         private Button btnSalvar;
         private Button btnExcluir;
         private Button btnCancelar;
-        private Button button1;
+        private Button btnPesquisar;
         private GroupBox grbListaClientes;
         private DataGridView dgvClientes;
         private ImageList imlicones;

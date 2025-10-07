@@ -264,6 +264,7 @@
             btnPesquisar.Size = new Size(40, 31);
             btnPesquisar.TabIndex = 7;
             btnPesquisar.UseVisualStyleBackColor = true;
+            btnPesquisar.Click += btnPesquisar_Click;
             // 
             // grbListaUsuarios
             // 
