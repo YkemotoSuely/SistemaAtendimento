@@ -277,6 +277,7 @@
             btnPesquisar.Size = new Size(32, 32);
             btnPesquisar.TabIndex = 8;
             btnPesquisar.UseVisualStyleBackColor = true;
+            btnPesquisar.Click += btnPesquisar_Click;
             // 
             // grbListaEtapas
             // 
