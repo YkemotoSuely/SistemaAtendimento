@@ -174,6 +174,5 @@ namespace SistemaAtendimento.View
             _etapaController.ListarEtapas(termo);
         }
     }
-    }
 }
 
