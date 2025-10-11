@@ -389,7 +389,6 @@
             // 
             // btnPesquisarAtendimento
             // 
-            btnPesquisarAtendimento.Enabled = false;
             btnPesquisarAtendimento.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnPesquisarAtendimento.ImageAlign = ContentAlignment.MiddleLeft;
             btnPesquisarAtendimento.ImageIndex = 4;
@@ -402,6 +401,7 @@
             btnPesquisarAtendimento.Text = "Pesquisar Atendimento";
             btnPesquisarAtendimento.TextAlign = ContentAlignment.MiddleRight;
             btnPesquisarAtendimento.UseVisualStyleBackColor = true;
+            btnPesquisarAtendimento.Click += btnPesquisarAtendimento_Click;
             // 
             // FrmAtendimento
             // 
