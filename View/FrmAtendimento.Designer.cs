@@ -373,11 +373,11 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(478, 15);
+            label9.Location = new Point(485, 15);
             label9.Name = "label9";
-            label9.Size = new Size(170, 32);
+            label9.Size = new Size(163, 32);
             label9.TabIndex = 24;
-            label9.Text = "Atendimento: ";
+            label9.Text = "Atendimento:";
             // 
             // txtCodigoAtendimento
             // 

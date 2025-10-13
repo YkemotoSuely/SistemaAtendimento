@@ -78,12 +78,14 @@
             etapasToolStripMenuItem.Name = "etapasToolStripMenuItem";
             etapasToolStripMenuItem.Size = new Size(192, 22);
             etapasToolStripMenuItem.Text = "Etapas";
+            etapasToolStripMenuItem.Click += etapasToolStripMenuItem_Click;
             // 
             // situacaoAtendimentosToolStripMenuItem
             // 
             situacaoAtendimentosToolStripMenuItem.Name = "situacaoAtendimentosToolStripMenuItem";
             situacaoAtendimentosToolStripMenuItem.Size = new Size(192, 22);
             situacaoAtendimentosToolStripMenuItem.Text = "Situação Atendimento";
+            situacaoAtendimentosToolStripMenuItem.Click += situacaoAtendimentosToolStripMenuItem_Click;
             // 
             // atendimentosToolStripMenuItem
             // 
@@ -95,14 +97,14 @@
             // novoAtendimentoToolStripMenuItem
             // 
             novoAtendimentoToolStripMenuItem.Name = "novoAtendimentoToolStripMenuItem";
-            novoAtendimentoToolStripMenuItem.Size = new Size(180, 22);
+            novoAtendimentoToolStripMenuItem.Size = new Size(176, 22);
             novoAtendimentoToolStripMenuItem.Text = "Novo Atendimento";
             novoAtendimentoToolStripMenuItem.Click += novoAtendimentoToolStripMenuItem_Click;
             // 
             // consultasToolStripMenuItem
             // 
             consultasToolStripMenuItem.Name = "consultasToolStripMenuItem";
-            consultasToolStripMenuItem.Size = new Size(180, 22);
+            consultasToolStripMenuItem.Size = new Size(176, 22);
             consultasToolStripMenuItem.Text = "Consultas";
             consultasToolStripMenuItem.Click += consultasToolStripMenuItem_Click;
             // 
