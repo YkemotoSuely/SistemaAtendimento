@@ -31,11 +31,11 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConsultaAtendimento));
             grbFiltro = new GroupBox();
-            cbxFiltro = new ComboBox();
-            txtFiltro = new TextBox();
+            dgvConsultaAtendimento = new DataGridView();
             btnPesquisar = new Button();
             imageList1 = new ImageList(components);
-            dgvConsultaAtendimento = new DataGridView();
+            txtFiltro = new TextBox();
+            cbxFiltro = new ComboBox();
             grbFiltro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvConsultaAtendimento).BeginInit();
             SuspendLayout();
@@ -53,20 +53,13 @@
             grbFiltro.TabStop = false;
             grbFiltro.Text = "Filtrar por :";
             // 
-            // cbxFiltro
+            // dgvConsultaAtendimento
             // 
-            cbxFiltro.FormattingEnabled = true;
-            cbxFiltro.Location = new Point(8, 24);
-            cbxFiltro.Name = "cbxFiltro";
-            cbxFiltro.Size = new Size(184, 23);
-            cbxFiltro.TabIndex = 0;
-            // 
-            // txtFiltro
-            // 
-            txtFiltro.Location = new Point(216, 24);
-            txtFiltro.Name = "txtFiltro";
-            txtFiltro.Size = new Size(408, 23);
-            txtFiltro.TabIndex = 1;
+            dgvConsultaAtendimento.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvConsultaAtendimento.Location = new Point(16, 88);
+            dgvConsultaAtendimento.Name = "dgvConsultaAtendimento";
+            dgvConsultaAtendimento.Size = new Size(744, 320);
+            dgvConsultaAtendimento.TabIndex = 3;
             // 
             // btnPesquisar
             // 
@@ -87,13 +80,21 @@
             imageList1.TransparentColor = Color.Transparent;
             imageList1.Images.SetKeyName(0, "icone-pesquisar.png");
             // 
-            // dgvConsultaAtendimento
+            // txtFiltro
             // 
-            dgvConsultaAtendimento.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvConsultaAtendimento.Location = new Point(16, 88);
-            dgvConsultaAtendimento.Name = "dgvConsultaAtendimento";
-            dgvConsultaAtendimento.Size = new Size(744, 320);
-            dgvConsultaAtendimento.TabIndex = 3;
+            txtFiltro.Location = new Point(216, 24);
+            txtFiltro.Name = "txtFiltro";
+            txtFiltro.Size = new Size(408, 23);
+            txtFiltro.TabIndex = 1;
+            // 
+            // cbxFiltro
+            // 
+            cbxFiltro.FormattingEnabled = true;
+            cbxFiltro.Items.AddRange(new object[] { "Código do Atendimento", "", "Nome do Cliente", "", "CPF", "", "CNPJ" });
+            cbxFiltro.Location = new Point(8, 24);
+            cbxFiltro.Name = "cbxFiltro";
+            cbxFiltro.Size = new Size(184, 23);
+            cbxFiltro.TabIndex = 0;
             // 
             // FrmConsultaAtendimento
             // 

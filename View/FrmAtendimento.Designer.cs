@@ -217,7 +217,7 @@
             cbxSituacaoAtendimento.FormattingEnabled = true;
             cbxSituacaoAtendimento.Location = new Point(8, 96);
             cbxSituacaoAtendimento.Name = "cbxSituacaoAtendimento";
-            cbxSituacaoAtendimento.Size = new Size(240, 23);
+            cbxSituacaoAtendimento.Size = new Size(256, 23);
             cbxSituacaoAtendimento.TabIndex = 31;
             // 
             // cbxNomeCliente
