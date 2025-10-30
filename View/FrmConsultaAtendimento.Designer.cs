@@ -33,8 +33,8 @@
             dgvConsultaAtendimento = new DataGridView();
             txtFiltro = new TextBox();
             btnPesquisar = new Button();
-            cbxFiltro = new ComboBox();
             imageList1 = new ImageList(components);
+            cbxFiltro = new ComboBox();
             groupBox1 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)dgvConsultaAtendimento).BeginInit();
             groupBox1.SuspendLayout();
@@ -67,6 +67,14 @@
             btnPesquisar.Text = "Pesquisar";
             btnPesquisar.TextAlign = ContentAlignment.MiddleRight;
             btnPesquisar.UseVisualStyleBackColor = true;
+            btnPesquisar.Click += btnPesquisar_Click;
+            // 
+            // imageList1
+            // 
+            imageList1.ColorDepth = ColorDepth.Depth32Bit;
+            imageList1.ImageStream = (ImageListStreamer)resources.GetObject("imageList1.ImageStream");
+            imageList1.TransparentColor = Color.Transparent;
+            imageList1.Images.SetKeyName(0, "icone-pesquisar.png");
             // 
             // cbxFiltro
             // 
@@ -76,13 +84,6 @@
             cbxFiltro.Name = "cbxFiltro";
             cbxFiltro.Size = new Size(162, 23);
             cbxFiltro.TabIndex = 4;
-            // 
-            // imageList1
-            // 
-            imageList1.ColorDepth = ColorDepth.Depth32Bit;
-            imageList1.ImageStream = (ImageListStreamer)resources.GetObject("imageList1.ImageStream");
-            imageList1.TransparentColor = Color.Transparent;
-            imageList1.Images.SetKeyName(0, "icone-pesquisar.png");
             // 
             // groupBox1
             // 
@@ -105,6 +106,7 @@
             Controls.Add(dgvConsultaAtendimento);
             Name = "FrmConsultaAtendimento";
             Text = "Consultas de Atendimentos";
+            Load += FrmConsultaAtendimento_Load;
             ((System.ComponentModel.ISupportInitialize)dgvConsultaAtendimento).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

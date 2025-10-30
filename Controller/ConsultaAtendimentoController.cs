@@ -22,11 +22,13 @@ namespace SistemaAtendimento.Controller
         {
             try
             {
+                var listaAtendimento = _atendimentoRepository.Listar(termo, condicao);
+                _frmConsultaAtendimento.ExibirAtendimentos(listaAtendimento);
 
             }
             catch (Exception ex)
             {
-
+                _frmConsultaAtendimento.ExibirMensagem($"Erro ao listar os atendimentos: {ex.Message}");
             }
         }
 

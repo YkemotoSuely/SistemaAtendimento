@@ -255,6 +255,7 @@
             cbxNomeCliente.Name = "cbxNomeCliente";
             cbxNomeCliente.Size = new Size(382, 23);
             cbxNomeCliente.TabIndex = 3;
+       
             // 
             // label2
             // 
@@ -415,6 +416,7 @@
             Controls.Add(groupBox1);
             Name = "FrmAtendimento";
             Text = "Atendimento";
+   
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);

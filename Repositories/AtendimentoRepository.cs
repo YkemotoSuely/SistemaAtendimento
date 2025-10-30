@@ -15,63 +15,87 @@ namespace SistemaAtendimento.Repositories
         //Nome do Cliente
         //CPF
         //CNPJ
-        public List<Atendimentos> Listar(string termo = "", string condicao = "")
-        {
-            var lista = new List<Atendimentos>();
-            using (var conexao = ConexaoDB.GetConexao())
+      
+            public List<Atendimentos> Listar(string termo = "", string condicao = "")
             {
-                string sql = @"SELECT a.*, c.nome AS cliente_nome, s.nome AS situacao_nome, u.nome AS usuario_nome, c.cpf_cnpj 
-                            FROM atendimentos a 
-                            INNER JOIN clientes c ON c.id = a.cliente_id 
-                            INNER JOIN usuarios u ON u.id = a.usuario_id 
-                            INNER JOIN situacao_atendimentos s ON s.id = a.situacao_atendimento_id";
+                var lista = new List<Atendimentos>();
 
-                if (!string.IsNullOrEmpty(termo) && !string.IsNullOrEmpty(condicao))
+                using (var conexao = ConexaoDB.GetConexao())
                 {
-                    if(condicao == "Código do Atendimento")
+                    string sql = @"SELECT 
+                               a.*, 
+                               c.nome AS cliente_nome, 
+                               s.nome AS situacao_nome, 
+                               u.nome AS usuario_nome, 
+                               c.cpf_cnpj 
+                           FROM atendimentos a
+                           INNER JOIN clientes c ON c.id = a.cliente_id
+                           INNER JOIN usuarios u ON u.id = a.usuario_id
+                           INNER JOIN situacao_atendimentos s ON s.id = a.situacao_atendimento_id";
+
+                    if (!string.IsNullOrEmpty(termo) && !string.IsNullOrEmpty(condicao))
                     {
-                        sql += " WHERE id = @termo";
-                    }else if (condicao == "Nome do Cliente")
-                    {
-                        sql += " WHERE c.nome LIKE %@termo%";
+                        if (condicao == "Código do Atendimento")
+                        {
+                            sql += " WHERE a.id = @termo";
+                        }
+                        else if (condicao == "Nome do Cliente")
+                        {
+                            sql += " WHERE c.nome LIKE @termo";
+                        }
+                        else 
+                        {
+                            sql += " WHERE c.cpf_cnpj LIKE @termo";
+                        }
                     }
-                    else
+
+                    using (var comando = new SqlCommand(sql, conexao))
                     {
-                        sql += " WHERE c.cpf_cnpj = @termo";
+                        if (!string.IsNullOrEmpty(termo) && !string.IsNullOrEmpty(condicao))
+                        {
+                            if (condicao == "Código do Atendimento")
+                            {
+                                if (int.TryParse(termo, out int codigo))
+                                {
+                                    comando.Parameters.AddWithValue("@termo", codigo);
+                                }                                
+                            }
+                            else 
+                            {
+                               comando.Parameters.AddWithValue("@termo", "%" + termo + "%");
+                            }
+                           
+                        }
+
+                        conexao.Open();
+
+                        using (var linhas = comando.ExecuteReader())
+                        {
+                            while (linhas.Read())
+                            {
+                                lista.Add(new Atendimentos
+                                {
+                                    Id = Convert.ToInt32(linhas["id"]),
+                                    ClienteId = Convert.ToInt32(linhas["cliente_id"]),
+                                    UsuarioId = Convert.ToInt32(linhas["usuario_id"]),
+                                    DataAbertura = linhas["data_abertura"] as DateTime?,
+                                    DataFechamento = linhas["data_fechamento"] as DateTime?,
+                                    Observacao = linhas["observacao"].ToString(),
+                                    SituacaoAtendimentoId = Convert.ToInt32(linhas["situacao_atendimento_id"]),
+                                    ClienteNome = linhas["cliente_nome"].ToString(),
+                                    SituacaoAtendimentoNome = linhas["situacao_nome"].ToString(),
+                                    UsuarioNome = linhas["usuario_nome"].ToString(),
+                                    CpfCnpj = linhas["cpf_cnpj"].ToString() 
+                                });
+                            }
+                        }
                     }
                 }
 
-                using (var comando = new SqlCommand(sql, conexao))
-                {
-                    if (!string.IsNullOrEmpty(termo))
-                    {
-                        comando.Parameters.AddWithValue("termo", termo);
-                    }
-
-                    conexao.Open();
-
-                    using (var linhas = comando.ExecuteReader())
-                    {
-                        lista.Add(new Atendimentos
-                        {
-                            Id = Convert.ToInt32(linhas["id"]),
-                            ClienteId = Convert.ToInt32(linhas["cliente_id"]),
-                            UsuarioId = Convert.ToInt32(linhas["usuario_id"]),
-                            DataAbertura = Convert.ToDateTime(linhas["data_abertura"]),
-                            DataFechamento = Convert.ToDateTime(linhas["data_fechamento"]),
-                            Observacao = linhas["observacao"].ToString(),
-                            SituacaoAtendimentoId = Convert.ToInt32(linhas["situacao_atendimento_id"]),
-                            ClienteNome = linhas["cliente_nome"].ToString(),
-                            SituacaoAtendimentoNome = linhas["situacao_nome"].ToString(),
-                            UsuarioNome = linhas["usuario_nome"].ToString(),
-
-                        });
-                    }
-                }              
-
+                return lista;
             }
-            return lista;
-        }
+        
+
 
         public void Inserir(Atendimentos atendimento)
         {
