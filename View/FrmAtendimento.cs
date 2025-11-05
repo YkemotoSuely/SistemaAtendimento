@@ -56,26 +56,96 @@ namespace SistemaAtendimento.View
         {
             txtCodigoCliente.Clear();
 
-            if (cbxNomeCliente.SelectedValue != null) 
+            if (cbxNomeCliente.SelectedValue != null)
             {
                 txtCodigoCliente.Text = cbxNomeCliente.SelectedValue.ToString();
             }
         }
 
-        private void CarregarEtapas() 
+        private void CarregarEtapas()
         {
             var etapas = _atendimentoController.ListarEtapas();
-            cbxEtapaAtendimento.DataSource = etapas;    
+            cbxEtapaAtendimento.DataSource = etapas;
             cbxEtapaAtendimento.DisplayMember = "Nome";
             cbxEtapaAtendimento.SelectedIndex = -1;
         }
 
-        private void CarregarSituacaoAtendimento() 
+        private void CarregarSituacaoAtendimento()
         {
             var situacaoAtendimento = _atendimentoController.ListarSituacaoAtendimentos();
             cbxSituacaoAtendimento.DataSource = situacaoAtendimento;
             cbxSituacaoAtendimento.DisplayMember = "Nome";
-            cbxSituacaoAtendimento .SelectedIndex = -1;
+            cbxSituacaoAtendimento.SelectedIndex = -1;
+        }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            HabilitarCampos();
+        }
+        private void HabilitarCampos()
+        {   //Campos do formulário
+            cbxNomeCliente.Enabled = true;
+            dtpAberturaAtendimento.Enabled = true;
+            cbxSituacaoAtendimento.Enabled = true;
+            txtObservacaoAtendimento.ReadOnly = false;
+            //botões do formulário
+            btnNovo.Enabled = false;
+            btnSalvar.Enabled = true;
+            btnCancelar.Enabled = true;
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            DesativarCampos();
+        }
+
+        private void DesativarCampos()
+        {
+            LimparCampos();
+
+            cbxNomeCliente.Enabled = false;
+            dtpAberturaAtendimento.Enabled = false;
+            cbxSituacaoAtendimento.Enabled = false;
+            txtObservacaoAtendimento.ReadOnly = true;
+            //botões do formulário
+            btnNovo.Enabled = true;
+            btnSalvar.Enabled = false;
+            btnCancelar.Enabled = false;
+        }
+        private void LimparCampos()
+        {
+            txtCodigoCliente.Clear();
+            cbxNomeCliente.SelectedIndex = -1;
+            cbxSituacaoAtendimento.SelectedIndex = -1;
+            txtObservacaoAtendimento.Clear();
+            dtpAberturaAtendimento.Value = DateTime.Now;
+
+
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            Atendimentos atendimento = new Atendimentos
+            {
+                ClienteId = Convert.ToInt32(txtCodigoCliente.Text),
+                UsuarioId = 1,
+                SituacaoAtendimentoId = Convert.ToInt32(cbxSituacaoAtendimento.SelectedValue),
+                DataAbertura = dtpAberturaAtendimento.Value,
+                Observacao = txtObservacaoAtendimento.Text
+            };
+
+            if (ValidarDados(atendimento))
+            {
+                return;
+            }    
+        }
+        private bool ValidarDados(Atendimentos atendimento) 
+        {
+            //Criar regras de validação de campos
+
+
+            return true;
         }
     }
 }
