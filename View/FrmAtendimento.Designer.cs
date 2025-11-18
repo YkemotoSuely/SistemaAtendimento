@@ -36,7 +36,7 @@
             btnExcluir = new Button();
             btnSalvar = new Button();
             label4 = new Label();
-            btnFinalizar = new Button();
+            btnFinalizarAtendimento = new Button();
             btnNovo = new Button();
             txtObservacaoAtendimento = new TextBox();
             label6 = new Label();
@@ -70,7 +70,7 @@
             groupBox1.Controls.Add(btnExcluir);
             groupBox1.Controls.Add(btnSalvar);
             groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(btnFinalizar);
+            groupBox1.Controls.Add(btnFinalizarAtendimento);
             groupBox1.Controls.Add(btnNovo);
             groupBox1.Controls.Add(txtObservacaoAtendimento);
             groupBox1.Controls.Add(label6);
@@ -158,20 +158,20 @@
             label4.TabIndex = 23;
             label4.Text = "Cód. Cliente";
             // 
-            // btnFinalizar
+            // btnFinalizarAtendimento
             // 
-            btnFinalizar.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnFinalizar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnFinalizar.ImageIndex = 6;
-            btnFinalizar.ImageList = imlIcones;
-            btnFinalizar.Location = new Point(566, 211);
-            btnFinalizar.Name = "btnFinalizar";
-            btnFinalizar.RightToLeft = RightToLeft.No;
-            btnFinalizar.Size = new Size(163, 33);
-            btnFinalizar.TabIndex = 22;
-            btnFinalizar.Text = "Finalizar Atendimento";
-            btnFinalizar.TextAlign = ContentAlignment.MiddleRight;
-            btnFinalizar.UseVisualStyleBackColor = true;
+            btnFinalizarAtendimento.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnFinalizarAtendimento.ImageAlign = ContentAlignment.MiddleLeft;
+            btnFinalizarAtendimento.ImageIndex = 6;
+            btnFinalizarAtendimento.ImageList = imlIcones;
+            btnFinalizarAtendimento.Location = new Point(566, 211);
+            btnFinalizarAtendimento.Name = "btnFinalizarAtendimento";
+            btnFinalizarAtendimento.RightToLeft = RightToLeft.No;
+            btnFinalizarAtendimento.Size = new Size(163, 33);
+            btnFinalizarAtendimento.TabIndex = 22;
+            btnFinalizarAtendimento.Text = "Finalizar Atendimento";
+            btnFinalizarAtendimento.TextAlign = ContentAlignment.MiddleRight;
+            btnFinalizarAtendimento.UseVisualStyleBackColor = true;
             // 
             // btnNovo
             // 
@@ -441,7 +441,7 @@
         private TextBox txtEtapaObservacao;
         private Label label7;
         private DataGridView dgvEtapasAtendimento;
-        private Button btnFinalizar;
+        private Button btnFinalizarAtendimento;
         private ImageList imlIcones;
         private Button btnNovo;
         private Button btnExcluirEtapa;

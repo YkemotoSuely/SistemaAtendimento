@@ -26,8 +26,6 @@ namespace SistemaAtendimento
         }
 
 
-
-
         public void ExibirMensagem(string mensagem)
         {
             MessageBox.Show(mensagem);

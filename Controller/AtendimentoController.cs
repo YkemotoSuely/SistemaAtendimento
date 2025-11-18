@@ -40,6 +40,24 @@ namespace SistemaAtendimento.Controller
         {
             return _situacaoAtendimentoRepository.Listar();
         }
+        public void Salvar(Atendimentos atendimento)  
+        {
+            try
+            {
+                _atendimentoRepository.Inserir(atendimento);
+                _frmAtendimento.ExibirMensagem("Atenidmento salvo com sucesso!");
+            }
+            catch (Exception ex)
+            {
+                _frmAtendimento.ExibirMensagem($"Erro ao cadastrar o Atendimento: {ex.Message}");
+            }
+        }
+
+        public Atendimentos? BuscarAtendimentoPorId(int id) 
+        {
+            return _atendimentoRepository.BuscarPorId(id);
+        }
+        
         
 
     }

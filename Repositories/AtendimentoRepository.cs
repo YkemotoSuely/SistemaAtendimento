@@ -94,6 +94,11 @@ namespace SistemaAtendimento.Repositories
 
                 return lista;
             }
+        public Atendimentos? BuscarPorId(int id) 
+        {
+            var resultado = Listar(id.ToString(), "Código do Atendimento");
+            return resultado.FirstOrDefault();
+        }
         
 
 
@@ -101,14 +106,13 @@ namespace SistemaAtendimento.Repositories
         {
             using (var conexao = ConexaoDB.GetConexao())
             {
-                string sql = @"INSERT INTO atendimentos (cliente_id, usuario_id, data_abertura, data_fechamento, observacao, situacao_atendimento_id) VALUES (@cliente_id, @usuario_id, @data_abertura, @data_fechamento, @observacao, @situacao_atendimento_id)";
+                string sql = @"INSERT INTO atendimentos (cliente_id, usuario_id, data_abertura, observacao, situacao_atendimento_id) VALUES (@cliente_id, @usuario_id, @data_abertura, @observacao, @situacao_atendimento_id)";
 
                 using (var comando = new SqlCommand(sql, conexao)) 
                 {
                     comando.Parameters.AddWithValue("@cliente_id", atendimento.ClienteId);
                     comando.Parameters.AddWithValue("@usuario_id", atendimento.UsuarioId);
                     comando.Parameters.AddWithValue("@data_abertura", atendimento.DataAbertura);
-                    comando.Parameters.AddWithValue("@data_fechamento", atendimento.DataFechamento);
                     comando.Parameters.AddWithValue("@observacao", atendimento.Observacao);
                     comando.Parameters.AddWithValue("@situacao_atendimento_id", atendimento.SituacaoAtendimentoId);
 
