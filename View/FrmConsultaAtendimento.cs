@@ -50,14 +50,14 @@ namespace SistemaAtendimento.View
             if (e.RowIndex >= 0) 
             {
                 int id = (int)dgvConsultaAtendimento.Rows[e.RowIndex].Cells["Id"].Value;
-                this.Hide();
+
                 //MessageBox.Show(id.ToString());
+                this.Close();
+                
+               var atendimento = new FrmAtendimento(id);
+               atendimento.Show();
 
-                FrmAtendimento  frmAtendimento = new FrmAtendimento(id);
-                frmAtendimento.ShowDialog();
-
-                //this.Close();
-
+                
             }
         }
 

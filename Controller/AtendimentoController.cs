@@ -45,11 +45,24 @@ namespace SistemaAtendimento.Controller
             try
             {
                 _atendimentoRepository.Inserir(atendimento);
-                _frmAtendimento.ExibirMensagem("Atenidmento salvo com sucesso!");
+                _frmAtendimento.ExibirMensagem("Atendimento salvo com sucesso!");
             }
             catch (Exception ex)
             {
                 _frmAtendimento.ExibirMensagem($"Erro ao cadastrar o Atendimento: {ex.Message}");
+            }
+        }
+
+        public void Atualizar(Atendimentos atendimento) 
+        {
+            try
+            {
+                _atendimentoRepository.Atualizar(atendimento);
+                _frmAtendimento.ExibirMensagem("Atendimento atualizado com sucesso!");
+            }
+            catch (Exception ex) 
+            {
+                _frmAtendimento.ExibirMensagem($"Erro ao atualizar o atendimento: {ex.Message}");
             }
         }
 

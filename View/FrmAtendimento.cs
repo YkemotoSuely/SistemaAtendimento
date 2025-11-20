@@ -184,7 +184,7 @@ namespace SistemaAtendimento.View
         {
             Atendimentos atendimento = new Atendimentos
             {
-
+                Id = _atendimentoId ?? null,
 
                 ClienteId = string.IsNullOrWhiteSpace(txtCodigoCliente.Text) ? null : Convert.ToInt32(cbxNomeCliente.SelectedValue),
                 // ? if ternário tenta depois convert,
@@ -192,12 +192,21 @@ namespace SistemaAtendimento.View
                 SituacaoAtendimentoId = cbxSituacaoAtendimento.SelectedValue == null ? null : Convert.ToInt32(cbxSituacaoAtendimento.SelectedValue),
                 Observacao = txtObservacaoAtendimento.Text,
                 DataAbertura = dtpAberturaAtendimento.Value,
+              
             };
 
             if (!Validardados(atendimento))
                 return;
 
-            _atendimentoController.Salvar(atendimento);
+            if (_atendimentoId.HasValue && _atendimentoId > 0)
+            {
+                _atendimentoController.Atualizar(atendimento);
+            }
+            else 
+            {
+                _atendimentoController.Salvar(atendimento);
+            }
+                _atendimentoController.Salvar(atendimento);
         }
         private bool Validardados(Atendimentos atendimento)
         {
