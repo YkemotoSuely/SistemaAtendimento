@@ -43,7 +43,7 @@ namespace SistemaAtendimento.Repositories
                                 Ativo = Convert.ToBoolean(linhas["ativo"])
                             });
                         }
-                    }
+                    } 
                 }
             }
 
