@@ -21,6 +21,7 @@ namespace SistemaAtendimento.View
     public partial class FrmAtendimento : Form
     {
         private AtendimentoController _atendimentoController;
+        private EtapasAtendimentoController _etapasAtendimentoController;
 
         private int? _atendimentoId;
 
@@ -28,6 +29,8 @@ namespace SistemaAtendimento.View
         {
             InitializeComponent();
             _atendimentoController = new AtendimentoController(this); //this injeta esse formulario no controlador
+
+            _etapasAtendimentoController = new EtapasAtendimentoController(this);
 
             _atendimentoId = atendimentoId;
         }
@@ -68,6 +71,10 @@ namespace SistemaAtendimento.View
                 {
                     //Preencher campos
                     PreencherCampos(atendimento);
+
+                    grbEtapasAtendimento.Enabled = true;
+
+                    CarregarEtapasAtendimento();
                 }
             }
         }
@@ -211,6 +218,10 @@ namespace SistemaAtendimento.View
                 _atendimentoId = atendimentoId;
 
                 btnExcluir.Enabled = true;
+
+                grbEtapasAtendimento.Enabled = true;
+
+                CarregarEtapasAtendimento();
             }
 
         }
@@ -259,12 +270,78 @@ namespace SistemaAtendimento.View
                 }
 
             }
-            else 
+            else
             {
                 ExibirMensagem(" Nenhum atendimento selecionado para exclusão");
             }
-            
-           
+
+
+        }
+        private void CarregarEtapasAtendimento()
+        {
+            if (!_atendimentoId.HasValue)
+            {
+                return;
+            }
+            dgvEtapasAtendimento.DataSource = _etapasAtendimentoController.Listar(_atendimentoId.Value);
+        }
+
+        private void btnAdicionarEtapa_Click(object sender, EventArgs e)
+        {
+            if (!_atendimentoId.HasValue)
+            {
+                MessageBox.Show("Salve o atendimento antes de adicionar etapas");
+                return;
+            }
+            if (cbxEtapaAtendimento.SelectedValue == null)
+            {
+                MessageBox.Show("selecione uma Etapa");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtEtapaObservacao.Text))
+            {
+                ExibirMensagem("Digite uma observação do Atendimento");
+                txtEtapaObservacao.Focus();
+                return;
+
+            }
+
+            var etapaAtendimento = new EtapasAtendimentos
+            {
+                AtendimentoId = _atendimentoId.Value,
+                EtapaId = Convert.ToInt32(cbxEtapaAtendimento.SelectedValue),
+                UsuarioId = 1,
+                DataCadastro = DateTime.Now,
+                Observacao = txtEtapaObservacao.Text,
+            };
+
+            _etapasAtendimentoController.Salvar(etapaAtendimento);
+
+            cbxEtapaAtendimento.SelectedIndex = -1;
+            txtEtapaObservacao.Clear();
+
+            CarregarEtapasAtendimento();
+
+        }
+
+        private void btnExcluirEtapa_Click(object sender, EventArgs e)
+        {
+            if (dgvEtapasAtendimento.SelectedRows.Count == 0) 
+            {
+                MessageBox.Show("Selecione uma etapa para excluir");
+                return;
+
+                int id = Convert.ToInt32(dgvEtapasAtendimento.SelectedRows[0].Cells["Id"].Value);
+
+                var confirmar = MessageBox.Show("Deseja excluir esta Etapa?", "Confirmação", MessageBoxButtons.YesNo);
+
+                if (confirmar == DialogResult.Yes) 
+                {
+                    _etapasAtendimentoController.Excluir(id);
+                    CarregarEtapasAtendimento();
+                
+                }
+            }
         }
     }
 }

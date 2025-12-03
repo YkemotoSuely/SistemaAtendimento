@@ -10,6 +10,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using SistemaAtendimento.Controller;
 using SistemaAtendimento.Model;
 
@@ -318,11 +319,64 @@ namespace SistemaAtendimento
             }
         }
 
+        //private async Task BuscarEnderecoPorCep(string cep)
+        //{
+        //    try
+        //    {
+
+        //        cep = cep.Replace("-", "").Trim();
+
+        //        using (HttpClient client = new HttpClient())
+        //        {
+        //            string url = $"https://viacep.com.br/ws/{cep}/json/";
+
+        //            var response = await client.GetAsync(url);
+
+        //            if (response.IsSuccessStatusCode)
+        //            {
+        //                string json = await response.Content.ReadAsStringAsync();
+
+        //                dynamic? dadosEndereco = JsonConvert.DeserializeObject(json);
+
+        //                if (dadosEndereco?.ContainsKey("erro") && (bool)dadosEndereco?.erro)
+        //                {
+        //                    ExibirMensagem("CEP não encontrado. Verifique e tente novamente.");
+        //                    return;
+        //                }
+
+        //                txtEndereco.Text = dadosEndereco?.logradouro;
+        //                txtBairro.Text = dadosEndereco?.bairro;
+        //                txtCidade.Text = dadosEndereco?.localidade;
+        //                cbxEstado.Text = dadosEndereco?.uf;
+
+        //            }
+
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ExibirMensagem($"Erro ao buscar o Endereço: {ex.Message}");
+        //    }
+        //}
+
+        //private async void txtCep_Leave(object sender, EventArgs e)
+        //{
+        //    if (!string.IsNullOrEmpty(txtCep.Text))
+        //    {
+        //        await BuscarEnderecoPorCep(txtCep.Text);
+        //    }
+        //}
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            string termo = txtPesquisar.Text.Trim();
+            _clienteController.ListarClientes(termo);
+        }
+
         private async Task BuscarEnderecoPorCep(string cep)
         {
             try
             {
-
                 cep = cep.Replace("-", "").Trim();
 
                 using (HttpClient client = new HttpClient())
@@ -331,25 +385,27 @@ namespace SistemaAtendimento
 
                     var response = await client.GetAsync(url);
 
-                    if (response.IsSuccessStatusCode)
+                    if (!response.IsSuccessStatusCode)
                     {
-                        string json = await response.Content.ReadAsStringAsync();
-
-                        dynamic? dadosEndereco = JsonConvert.DeserializeObject(json);
-
-                        if (dadosEndereco?.ContainsKey("erro") && (bool)dadosEndereco?.erro)
-                        {
-                            ExibirMensagem("CEP não encontrado. Verifique e tente novamente.");
-                            return;
-                        }
-
-                        txtEndereco.Text = dadosEndereco?.logradouro;
-                        txtBairro.Text = dadosEndereco?.bairro;
-                        txtCidade.Text = dadosEndereco?.localidade;
-                        cbxEstado.Text = dadosEndereco?.uf;
-
+                        ExibirMensagem("Erro ao consultar o CEP.");
+                        return;
                     }
 
+                    string json = await response.Content.ReadAsStringAsync();
+
+                    JObject dadosEndereco = JObject.Parse(json);
+
+                    // CEP inexistente
+                    if (dadosEndereco["erro"] != null)
+                    {
+                        ExibirMensagem("CEP não encontrado. Verifique e tente novamente.");
+                        return;
+                    }
+
+                    txtEndereco.Text = (string)dadosEndereco["logradouro"];
+                    txtBairro.Text = (string)dadosEndereco["bairro"];
+                    txtCidade.Text = (string)dadosEndereco["localidade"];
+                    cbxEstado.Text = (string)dadosEndereco["uf"];
                 }
             }
             catch (Exception ex)
@@ -357,21 +413,5 @@ namespace SistemaAtendimento
                 ExibirMensagem($"Erro ao buscar o Endereço: {ex.Message}");
             }
         }
-
-        private async void txtCep_Leave(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtCep.Text))
-            {
-                await BuscarEnderecoPorCep(txtCep.Text);
-            }
-        }
-
-        private void btnPesquisar_Click(object sender, EventArgs e)
-        {
-            string termo = txtPesquisar.Text.Trim();
-            _clienteController.ListarClientes(termo);
-        }
-
-        
     }
 }

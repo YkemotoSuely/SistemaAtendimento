@@ -152,4 +152,9 @@ private void btnSalvar_Click(object sender, EventArgs e)
     }    
 }
 
-Jornada: clicar na função segurando a tecla Control, 
+---------------------------------------------------------------------------------
+29/11/2025
+
+1)criando o model "Etapas de Atendimento"
+
+2)Criando o repository "Etapa de Atendimento" - 3 funções Inserir; Excluir(Id) e Listar(relacionado ao AtendimentoId)

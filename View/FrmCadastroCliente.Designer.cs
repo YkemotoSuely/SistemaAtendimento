@@ -274,7 +274,6 @@
             txtCep.ReadOnly = true;
             txtCep.Size = new Size(153, 23);
             txtCep.TabIndex = 7;
-            txtCep.Leave += txtCep_Leave;
             // 
             // lblCep
             // 
@@ -528,7 +527,6 @@
             txtPesquisar.Name = "txtPesquisar";
             txtPesquisar.Size = new Size(233, 25);
             txtPesquisar.TabIndex = 20;
-            
             // 
             // lblPesquisar
             // 
