@@ -118,7 +118,7 @@
             // sairToolStripMenuItem
             // 
             sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            sairToolStripMenuItem.Size = new Size(180, 22);
+            sairToolStripMenuItem.Size = new Size(93, 22);
             sairToolStripMenuItem.Text = "Sair";
             sairToolStripMenuItem.Click += sairToolStripMenuItem_Click;
             // 
@@ -142,6 +142,7 @@
             MainMenuStrip = mnuTelaPrincipal;
             Name = "FrmTelaPrincipal";
             Text = "Sistema de Atendimento";
+            FormClosed += FrmTelaPrincipal_FormClosed;
             mnuTelaPrincipal.ResumeLayout(false);
             mnuTelaPrincipal.PerformLayout();
             ResumeLayout(false);
