@@ -1,4 +1,5 @@
 using Microsoft.Data.SqlClient;
+using SistemaAtendimento.Controller;
 using SistemaAtendimento.Database;
 using SistemaAtendimento.View;
 
@@ -71,6 +72,24 @@ namespace SistemaAtendimento
         private void FrmTelaPrincipal_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void listaDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                var clienteController = new ClienteController(null);
+                clienteController.GerarRelatorioPDF();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao processar o relatório: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally 
+            {
+                this.Cursor= Cursors.Default;
+            }
         }
     }
 }

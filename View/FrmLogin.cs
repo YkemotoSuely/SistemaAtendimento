@@ -25,7 +25,7 @@ namespace SistemaAtendimento.View
         private void btnEntra_Click(object sender, EventArgs e)
         {
             Usuarios usuario = _usuarioController.Autenticar(
-                txtEmail.Text.Trim(), 
+                txtEmail.Text.Trim(),
                 txtSenha.Text.Trim()
                 );
 
@@ -38,11 +38,11 @@ namespace SistemaAtendimento.View
                 this.Hide();
 
             }
-            else 
+            else
             {
                 MessageBox.Show("E-mail ou Senha inválidos", "Erro",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error );
-            
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
     }
