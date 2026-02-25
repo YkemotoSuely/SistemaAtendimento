@@ -1,5 +1,4 @@
-﻿
-using QuestPDF.Fluent;
+﻿using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 using QuestPDF.Companion;
@@ -7,13 +6,13 @@ using SistemaAtendimento.Model;
 
 namespace SistemaAtendimento.Services
 {
-   public class RelatorioClientes
+    public class RelatorioEtapas
     {
-        public string GerarListaClientes(List<Clientes> listaClientes)
+        public string GerarListaEtapas(List<Etapas> listaEtapas)
         {
             QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
 
-            string caminho = Path.Combine(Path.GetTempPath(), $"RelatorioCliente_{Guid.NewGuid}.pdf");
+            string caminho = Path.Combine(Path.GetTempPath(), $"RelatorioEtapa_{Guid.NewGuid}.pdf");
 
             Document.Create(container => {
 
@@ -25,7 +24,7 @@ namespace SistemaAtendimento.Services
                     page.DefaultTextStyle(x => x.FontSize(10).FontFamily(Fonts.Verdana));
 
                     //início cabeçalho
-                    page.Header(). BorderBottom(1). PaddingBottom(10).Row(row => {
+                    page.Header().BorderBottom(1).PaddingBottom(10).Row(row => {
 
                         row.RelativeItem(1).Column(col =>
                         {
@@ -41,12 +40,12 @@ namespace SistemaAtendimento.Services
                             }
                         });
 
-                        row.RelativeItem(1).AlignCenter().AlignMiddle().Text("Lista de Clientes").FontSize(16).Bold();
+                        row.RelativeItem(1).AlignCenter().AlignMiddle().Text("Lista de Etapas").FontSize(16).Bold();
 
                         row.RelativeItem(1).AlignRight().AlignMiddle().Text(t => {
                             t.Span("Data: ").Bold();
                             t.Span(DateTime.Now.ToString("dd/MM/yyyy"));
-                           
+
                         });
                     });
 
@@ -62,14 +61,14 @@ namespace SistemaAtendimento.Services
 
                 });
 
-                
-
-                   
-                   
 
 
-             
-            
+
+
+
+
+
+
             }).GeneratePdf(caminho);
 
             return caminho;
