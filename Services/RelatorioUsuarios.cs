@@ -14,9 +14,11 @@ namespace SistemaAtendimento.Services
 
             string caminho = Path.Combine(Path.GetTempPath(), $"RelatorioUsuario_{Guid.NewGuid}.pdf");
 
-            Document.Create(container => {
+            Document.Create(container =>
+            {
 
-                container.Page(page => {
+                container.Page(page =>
+                {
 
                     page.Size(PageSizes.A4);
                     page.Margin(1, Unit.Centimetre);
@@ -24,7 +26,8 @@ namespace SistemaAtendimento.Services
                     page.DefaultTextStyle(x => x.FontSize(10).FontFamily(Fonts.Verdana));
 
                     //início cabeçalho
-                    page.Header().BorderBottom(1).PaddingBottom(10).Row(row => {
+                    page.Header().BorderBottom(1).PaddingBottom(10).Row(row =>
+                    {
 
                         row.RelativeItem(1).Column(col =>
                         {
@@ -42,36 +45,68 @@ namespace SistemaAtendimento.Services
 
                         row.RelativeItem(1).AlignCenter().AlignMiddle().Text("Lista de Usuarios").FontSize(16).Bold();
 
-                        row.RelativeItem(1).AlignRight().AlignMiddle().Text(t => {
+                        row.RelativeItem(1).AlignRight().AlignMiddle().Text(t =>
+                        {
                             t.Span("Data: ").Bold();
                             t.Span(DateTime.Now.ToString("dd/MM/yyyy"));
 
                         });
                     });
 
-                    //conteúdo central
-                    //page.Content().PaddingVertical(10).Table(table => { });
+                    //corpo do relatório
+                    page.Content().PaddingVertical(10).Table(table =>
+                    {
 
-                    //rodapé
-                    page.Footer().AlignCenter().Text(t => {
+                        table.ColumnsDefinition(columns =>
+                        {
+                            columns.ConstantColumn(30); // Coluna para ID
+                            columns.RelativeColumn(3);
+                            columns.RelativeColumn(3);
+                           
 
-                        t.Span("Página: ");
-                        t.CurrentPageNumber();
+
+                        });
+
+                        // Cabeçalho da tabela   define a linha de titulo 
+                        table.Header(header =>
+                        {
+                            header.Cell().BorderBottom(1).Text("ID").Bold();
+                            header.Cell().BorderBottom(1).Text("NOME").Bold();
+                            header.Cell().BorderBottom(1).Text("EMAIL").Bold();
+
+                        });
+
+                        foreach (var cliente in listaUsuarios)
+                        {
+                            table.Cell().BorderBottom(0.5f).PaddingVertical(2).Text(cliente.Id.ToString());
+                            table.Cell().BorderBottom(0.5f).PaddingVertical(2).Text(cliente.Nome ?? "-");
+                            table.Cell().BorderBottom(0.5f).PaddingVertical(2).Text(cliente.Email ?? "-");
+
+
+                        }
                     });
 
+                    //rodapé do relatório
+                    page.Footer().AlignCenter().Text(t =>
+                    {
+                        t.Span("Página ");
+                        t.CurrentPageNumber();
+                        t.Span(" de ");
+                        t.TotalPages();
+                    });
                 });
 
-
-
-
-
-
-
-
-
-            }).GeneratePdf(caminho);
+            }). GeneratePdf(caminho);
 
             return caminho;
+
         }
+
     }
 }
+
+
+
+
+
+

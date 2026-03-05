@@ -6,9 +6,9 @@ using SistemaAtendimento.Model;
 
 namespace SistemaAtendimento.Services
 {
-    public class RelatorioSituacaoAtendimentos
+    public class RelatorioSituacaoAtendimento
     {
-        public string GerarListaSituacaoAtendimentos(List<SituacaoAtendimentos> listaSituacaoAtendimentos)
+        public string GerarListaSituacaoAtendimento(List<SituacaoAtendimentos> listaSituacaoAtendimentos)
         {
             QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
 
@@ -57,15 +57,11 @@ namespace SistemaAtendimento.Services
 
                         t.Span("Página: ");
                         t.CurrentPageNumber();
+                        t.Span(" de ");
+                        t.TotalPages();
                     });
 
                 });
-
-
-
-
-
-
 
 
 

@@ -43,8 +43,8 @@
             listaDeClientesToolStripMenuItem = new ToolStripMenuItem();
             listaDeUsuariosToolStripMenuItem = new ToolStripMenuItem();
             listaDeEtapasToolStripMenuItem = new ToolStripMenuItem();
-            btnConexao = new Button();
             listaDeSituaçãoDeAtendimentosToolStripMenuItem = new ToolStripMenuItem();
+            btnConexao = new Button();
             mnuTelaPrincipal.SuspendLayout();
             SuspendLayout();
             // 
@@ -155,6 +155,13 @@
             listaDeEtapasToolStripMenuItem.Text = "Lista de Etapas";
             listaDeEtapasToolStripMenuItem.Click += listaDeEtapasToolStripMenuItem_Click;
             // 
+            // listaDeSituaçãoDeAtendimentosToolStripMenuItem
+            // 
+            listaDeSituaçãoDeAtendimentosToolStripMenuItem.Name = "listaDeSituaçãoDeAtendimentosToolStripMenuItem";
+            listaDeSituaçãoDeAtendimentosToolStripMenuItem.Size = new Size(256, 22);
+            listaDeSituaçãoDeAtendimentosToolStripMenuItem.Text = "Lista de Situação de Atendimentos";
+            listaDeSituaçãoDeAtendimentosToolStripMenuItem.Click += listaDeSituaçãoDeAtendimentosToolStripMenuItem_Click;
+            // 
             // btnConexao
             // 
             btnConexao.Location = new Point(655, 406);
@@ -164,13 +171,6 @@
             btnConexao.Text = "Teste Conexão";
             btnConexao.UseVisualStyleBackColor = true;
             btnConexao.Click += btnConexao_Click;
-            // 
-            // listaDeSituaçãoDeAtendimentosToolStripMenuItem
-            // 
-            listaDeSituaçãoDeAtendimentosToolStripMenuItem.Name = "listaDeSituaçãoDeAtendimentosToolStripMenuItem";
-            listaDeSituaçãoDeAtendimentosToolStripMenuItem.Size = new Size(256, 22);
-            listaDeSituaçãoDeAtendimentosToolStripMenuItem.Text = "Lista de Situação de Atendimentos";
-            listaDeSituaçãoDeAtendimentosToolStripMenuItem.Click += listaDeSituaçãoDeAtendimentosToolStripMenuItem_Click;
             // 
             // FrmTelaPrincipal
             // 

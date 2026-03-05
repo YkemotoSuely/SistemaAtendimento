@@ -85,11 +85,11 @@ namespace SistemaAtendimento.Controller
 
             try
             {
-                var listaUsuarios = _situacaoAtendimentoRepository.Listar();
+                var listaSituacaoAtendimento = _situacaoAtendimentoRepository.Listar();
 
-                var relatorioUsuarios = new RelatorioUsuarios();
+                var relatorioSituacaoAtendimento = new RelatorioSituacaoAtendimento();
 
-                string arquivo = relatorioUsuarios.GerarListaSituacaoAtendimentos(listaSituacaoAtendimentos);
+                string arquivo = relatorioSituacaoAtendimento.GerarListaSituacaoAtendimento(listaSituacaoAtendimento);
 
                 var psi = new ProcessStartInfo(arquivo)
                 {

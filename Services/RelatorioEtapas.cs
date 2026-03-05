@@ -49,29 +49,54 @@ namespace SistemaAtendimento.Services
                         });
                     });
 
-                    //conteúdo central
-                    //page.Content().PaddingVertical(10).Table(table => { });
+                    //corpo do relatório
+                    page.Content().PaddingVertical(10).Table(table =>
+                    {
 
-                    //rodapé
-                    page.Footer().AlignCenter().Text(t => {
+                        table.ColumnsDefinition(columns =>
+                        {
+                            columns.ConstantColumn(30); // Coluna para ID
+                            columns.RelativeColumn(3);
+                            columns.RelativeColumn(3);
 
-                        t.Span("Página: ");
-                        t.CurrentPageNumber();
+
+
+                        });
+
+                        // Cabeçalho da tabela   define a linha de titulo 
+                        table.Header(header =>
+                        {
+                            header.Cell().BorderBottom(1).Text("ID").Bold();
+                            header.Cell().BorderBottom(1).Text("NOME").Bold();
+                            header.Cell().BorderBottom(1).Text("ORDEM").Bold();
+
+                        });
+
+                        foreach (var cliente in listaEtapas)
+                        {
+                            table.Cell().BorderBottom(0.5f).PaddingVertical(2).Text(cliente.Id.ToString());
+                            table.Cell().BorderBottom(0.5f).PaddingVertical(2).Text(cliente.Nome ?? "-");
+                            table.Cell().BorderBottom(0.5f).PaddingVertical(2).Text(cliente.Ordem ?? "-");
+
+
+                        }
                     });
 
+                    //rodapé do relatório
+                    page.Footer().AlignCenter().Text(t =>
+                    {
+                        t.Span("Página ");
+                        t.CurrentPageNumber();
+                        t.Span(" de ");
+                        t.TotalPages();
+                    });
                 });
-
-
-
-
-
-
-
-
 
             }).GeneratePdf(caminho);
 
             return caminho;
+
         }
+
     }
 }
